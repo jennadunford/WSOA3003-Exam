@@ -31,6 +31,8 @@ public class variableHandler : MonoBehaviour
     public turnManager currentTurn = turnManager.playerTurn;
 
 
+    public static int SSRICounter = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,13 @@ public class variableHandler : MonoBehaviour
         enemyEnergyBar.fillAmount = (enemyEnergy/maxValue);
         updateColour(enemyEnergy / maxValue, enemyEnergyBar, 1);
 
+
+
+
+        playerEnergy = valueLimits(playerEnergy);
+        playerHealth = valueLimits(playerHealth);
+        enemyHealth = valueLimits (enemyHealth);
+        enemyEnergy = valueLimits (enemyEnergy);
 
         hitChanceText.text = "Hit Chance: " + playerHitChance.ToString("F2") + "%";
         playerHealthText.text = playerHealth.ToString("F1");
@@ -165,5 +174,21 @@ public class variableHandler : MonoBehaviour
         //yield return new WaitForSeconds(2f);
     }
 
+    public float valueLimits(float value)
+    {
+        if(value > maxValue)
+        {
+            return maxValue;
+        }
+        else if(value < 0f)
+        {
+            return 0f;
+        }
+        else
+        {
+            return value;
+        }
+
+    }
 
 }

@@ -594,6 +594,7 @@ GameObject:
   - component: {fileID: 126537463}
   - component: {fileID: 126537465}
   - component: {fileID: 126537464}
+  - component: {fileID: 126537466}
   m_Layer: 0
   m_Name: gameManager
   m_TagString: Untagged
@@ -671,6 +672,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackButton: {fileID: 1814991097}
+--- !u!114 &126537466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126537461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaddb37199cb652448f0513fc1ed21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outputBox: {fileID: 223632306}
 --- !u!1 &130790300
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,24 +66,28 @@ public class selectButtons : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("Attacked with methylphenidate");
-                happeningText.text = "Attacked with methylphenidate";
+                //happeningText.text = "Attacked with methylphenidate";
+                GetComponent<playerAttackFunctions>().methylphenidateAttack(variableHandler.playerEnergy);
                 break;
             case 2:
                 Debug.Log("Attacked with clobazam");
-                happeningText.text = "Attacked with clobazam";
+                //happeningText.text = "Attacked with clobazam";
+                GetComponent<playerAttackFunctions>().clobazamAttack(variableHandler.playerHealth);
                 break;
             case 3:
                 Debug.Log("Attacked with SSRIs");
-                happeningText.text = "Attacked with SSRIs";
+                //happeningText.text = "Attacked with SSRIs";
+                GetComponent<playerAttackFunctions>().SSRIAttack(variableHandler.playerEnergy);
                 break;
             case 4:
                 Debug.Log("Attacked with Beta Blockers");
-                happeningText.text = "Attacked with Beta Blockers";
+                //happeningText.text = "Attacked with Beta Blockers";
+                GetComponent<playerAttackFunctions>().betaBlockAttack(variableHandler.playerEnergy);
                 break;
         }
         selected = 0;
 
-        Debug.Log(selected + ": Reset selected");
+        Debug.Log(selected + ": Reset selected and attack initiated");
     }
 
     public void closePanel()
