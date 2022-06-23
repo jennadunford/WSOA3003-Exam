@@ -56,7 +56,7 @@ public class selectButtons : MonoBehaviour
         Debug.Log(selected + ": Beta blockers is selected");
     }
 
-    public void resetSelected()
+    public void resetSelectedAndInitiateAttack()
     {
         switch (selected)
         {

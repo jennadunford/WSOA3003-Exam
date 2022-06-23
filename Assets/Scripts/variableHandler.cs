@@ -91,6 +91,7 @@ public class variableHandler : MonoBehaviour
                 break;
             case variableHandler.turnManager.afterEnemyTurn:
                 StartCoroutine(afterEnemyTurn());
+
                 //Wait a second or two
                 //Inform player that its now their turn
                 //Wait a second or two, switch to playerTurn
@@ -103,6 +104,15 @@ public class variableHandler : MonoBehaviour
             default:
                 //Nothing will happen
                 break;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if(currentTurn == turnManager.playerTurn)
+            {
+                this.GetComponent<attackScript>().attack();
+                this.GetComponent<selectButtons>().resetSelectedAndInitiateAttack();
+            }
         }
 
 

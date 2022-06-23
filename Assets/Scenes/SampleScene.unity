@@ -3968,7 +3968,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 126537463}
         m_TargetAssemblyTypeName: selectButtons, Assembly-CSharp
-        m_MethodName: resetSelected
+        m_MethodName: resetSelectedAndInitiateAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
