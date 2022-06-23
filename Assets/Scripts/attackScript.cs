@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class attackScript : MonoBehaviour
 {
+    public Button attackButton;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +17,24 @@ public class attackScript : MonoBehaviour
     void Update()
     {
         
+       
+        
     }
 
     public void attack()
     {
-        Debug.Log("An attack has occured");
+        if(selectButtons.selected == 0)
+        {
+            Debug.Log("no attack");
+        }
+        else
+        {
+            this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.afterPlayerTurn;
+            attackButton.gameObject.SetActive(false);
+            this.GetComponent<selectButtons>().deactivateButtons();
+        }
+       
     }
+
+
 }

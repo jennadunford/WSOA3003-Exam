@@ -124,7 +124,24 @@ public class selectButtons : MonoBehaviour
         }
 
     }
-    
+
+    public void deactivateButtons()
+    {
+        methylButton.gameObject.SetActive(false);
+        clobButton.gameObject.SetActive(false);
+        SSRIButton.gameObject.SetActive(false);
+        betaButton.gameObject.SetActive(false);
+    }
+
+    public void activateButtons()
+    {
+        methylButton.gameObject.SetActive(true);
+        clobButton.gameObject.SetActive(true);
+        SSRIButton.gameObject.SetActive(true);
+        betaButton.gameObject.SetActive(true);
+    }
+
+
 
 
 }
