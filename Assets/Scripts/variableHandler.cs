@@ -130,27 +130,29 @@ public class variableHandler : MonoBehaviour
 
     IEnumerator afterPlayerTurn()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         this.GetComponent<selectButtons>().happeningText.text = "The enemy is getting ready to strike...";
-        //yield return new WaitForSeconds(2f);
         this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.enemyTurn;
+        //yield return new WaitForSeconds(2f);
 
     }
 
     IEnumerator enemyTurn()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
-        //yield return new WaitForSeconds(2f);
         this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.afterEnemyTurn;
+
+        //yield return new WaitForSeconds(2f);
     }
 
     IEnumerator afterEnemyTurn()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         this.GetComponent<selectButtons>().happeningText.text = "It's your turn... select an attack!";
-        //yield return new WaitForSeconds(2f);
         this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.playerTurn;
+
+        //yield return new WaitForSeconds(2f);
     }
 
 
