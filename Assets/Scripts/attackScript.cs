@@ -21,9 +21,11 @@ public class attackScript : MonoBehaviour
 
     public void attack()
     {
-        if(selectButtons.selected == 0)
+        attackButton.gameObject.SetActive(false);
+        if (selectButtons.selected == 0)
         {
             Debug.Log("no attack");
+            attackButton.gameObject.SetActive(true);
         }
         else
         {

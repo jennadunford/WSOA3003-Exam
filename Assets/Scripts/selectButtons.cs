@@ -9,6 +9,7 @@ public class selectButtons : MonoBehaviour
     public Button clobButton;
     public Button SSRIButton;
     public Button betaButton;
+    public Button attackButton;
 
     public GameObject InfoPanel;
    
@@ -65,21 +66,26 @@ public class selectButtons : MonoBehaviour
                 happeningText.text = "No attack selected";
                 break;
             case 1:
+                deactivateButtons();
                 Debug.Log("Attacked with methylphenidate");
                 //happeningText.text = "Attacked with methylphenidate";
                 GetComponent<playerAttackFunctions>().methylphenidateAttack(variableHandler.playerEnergy);
                 break;
             case 2:
+                deactivateButtons();
                 Debug.Log("Attacked with clobazam");
                 //happeningText.text = "Attacked with clobazam";
                 GetComponent<playerAttackFunctions>().clobazamAttack(variableHandler.playerHealth);
                 break;
             case 3:
+                deactivateButtons();
                 Debug.Log("Attacked with SSRIs");
+                deactivateButtons();
                 //happeningText.text = "Attacked with SSRIs";
                 GetComponent<playerAttackFunctions>().SSRIAttack(variableHandler.playerEnergy);
                 break;
             case 4:
+                deactivateButtons();
                 Debug.Log("Attacked with Beta Blockers");
                 //happeningText.text = "Attacked with Beta Blockers";
                 GetComponent<playerAttackFunctions>().betaBlockAttack(variableHandler.playerEnergy);
@@ -135,6 +141,8 @@ public class selectButtons : MonoBehaviour
         clobButton.gameObject.SetActive(false);
         SSRIButton.gameObject.SetActive(false);
         betaButton.gameObject.SetActive(false);
+        attackButton.gameObject.SetActive(false);
+        Debug.Log("ALL BUTTONS DEACTIVATED");
     }
 
     public void activateButtons()
@@ -143,6 +151,8 @@ public class selectButtons : MonoBehaviour
         clobButton.gameObject.SetActive(true);
         SSRIButton.gameObject.SetActive(true);
         betaButton.gameObject.SetActive(true);
+        attackButton.gameObject.SetActive(true);
+        Debug.Log("ALL BUTTONS ACTIVATED");
     }
 
 

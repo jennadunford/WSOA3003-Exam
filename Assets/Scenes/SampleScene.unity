@@ -632,6 +632,7 @@ MonoBehaviour:
   clobButton: {fileID: 2015486960}
   SSRIButton: {fileID: 17436169}
   betaButton: {fileID: 1249572579}
+  attackButton: {fileID: 1814991097}
   InfoPanel: {fileID: 710730830}
   happeningText: {fileID: 223632306}
   weaponName: {fileID: 1419940096}
@@ -981,7 +982,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: This text indicates what is happening in the game to the player.
+  m_Text: Select an attack!
 --- !u!222 &223632307
 CanvasRenderer:
   m_ObjectHideFlags: 0

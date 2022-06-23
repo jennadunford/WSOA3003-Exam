@@ -99,16 +99,22 @@ public class variableHandler : MonoBehaviour
                 //Tells player what the enemy did
                 break;
             case variableHandler.turnManager.afterEnemyTurn:
-                StartCoroutine(afterEnemyTurn());
+                //StartCoroutine(afterEnemyTurn());
 
                 //Wait a second or two
                 //Inform player that its now their turn
                 //Wait a second or two, switch to playerTurn
+
+                this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.playerTurn;
+               // Debug.Log("in ienumerator afterenemyturn");
+                this.GetComponent<selectButtons>().activateButtons();
                 break;
 
             case variableHandler.turnManager.playerTurn:
-                this.GetComponent<attackScript>().attackButton.gameObject.SetActive(true);
-                this.GetComponent<selectButtons>().activateButtons();
+                //this.GetComponent<attackScript>().attackButton.gameObject.SetActive(true);
+                this.GetComponent<selectButtons>().happeningText.text = "It's your turn... select an attack!";
+
+
                 break;
             default:
                 //Nothing will happen
@@ -159,19 +165,29 @@ public class variableHandler : MonoBehaviour
     IEnumerator enemyTurn()
     {
         yield return new WaitForSeconds(4f);
-        this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
-        this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.afterEnemyTurn;
+        enemyTurnEvents();
+        //this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.afterEnemyTurn;
+        //this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
+        //this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.afterEnemyTurn;
 
         //yield return new WaitForSeconds(2f);
     }
 
     IEnumerator afterEnemyTurn()
     {
-        yield return new WaitForSeconds(4f);
-        this.GetComponent<selectButtons>().happeningText.text = "It's your turn... select an attack!";
+        yield return new WaitForSeconds(0f);
         this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.playerTurn;
+        Debug.Log("in ienumerator afterenemyturn");
+        this.GetComponent<selectButtons>().happeningText.text = "It's your turn... select an attack!";
+        this.GetComponent<selectButtons>().activateButtons();
 
         //yield return new WaitForSeconds(2f);
+    }
+
+    public void enemyTurnEvents()
+    {
+        this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.afterEnemyTurn;
+        this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
     }
 
     public float valueLimits(float value)
