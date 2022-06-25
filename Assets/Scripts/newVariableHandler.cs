@@ -15,17 +15,17 @@ public class newVariableHandler : MonoBehaviour
 
     public float maxValue = 400f;
 
-     Text hitChanceText;
-     Text turnText;
+     public Text hitChanceText;
+     public Text turnText;
 
-     Image playerEnergyBar;
-     Image playerHealthBar;
+     public Image playerEnergyBar;
+     public Image playerHealthBar;
 
-     Image enemyHealthBar;
-     Image enemyEnergyBar;
+     public Image enemyHealthBar;
+     public Image enemyEnergyBar;
 
-     Text playerHealthText;
-     Text playerEnergyText;
+     public Text playerHealthText;
+     public Text playerEnergyText;
 
     public enum turnManager { playerTurn, afterPlayerTurn, enemyTurn, afterEnemyTurn, none, empty }
     public turnManager currentTurn = turnManager.playerTurn;
@@ -37,10 +37,16 @@ public class newVariableHandler : MonoBehaviour
 
     public static int SSRICounter = 1;
 
+    public float timer = 0f;
+
+    bool buttonsActivated = false;
+
     // Start is called before the first frame update
     void Start()
     {
         currentTurn = turnManager.playerTurn;
+       
+        
         hitChanceText = GameObject.FindGameObjectWithTag("hitChanceText").GetComponent<Text>();
         turnText = GameObject.FindGameObjectWithTag("turnText").GetComponent<Text>();
         playerEnergyBar = GameObject.FindGameObjectWithTag("pFillEnergy").GetComponent<Image>();
@@ -55,7 +61,7 @@ public class newVariableHandler : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+       
 
         playerEnergyBar.fillAmount = (playerEnergy / maxValue);
         updateColour(playerEnergy / maxValue, playerEnergyBar, 1);
@@ -87,6 +93,7 @@ public class newVariableHandler : MonoBehaviour
                 break;
             case (turnManager.enemyTurn):
                 turnText.text = "TURN: ENEMY";
+                this.GetComponent<selectButtons>().happeningText.text = "The enemy is getting ready to strike...";
                 turnText.color = Color.red;
                 break;
             case (turnManager.afterPlayerTurn):
@@ -95,143 +102,49 @@ public class newVariableHandler : MonoBehaviour
                 break;
             case (turnManager.afterEnemyTurn):
                 turnText.text = "TURN: ...";
+                this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
                 turnText.color = Color.white;
                 break;
         }
 
-        //if(currentTurn == turnManager.afterPlayerTurn) 
-        //{
-        //    rawCounter = 0f;
-        //    counter = 100f;
-        //    bool inLoop = true;
-        //    bool inLoop2 = false;
-        //    bool inLoop3 = false;
-        //    while (inLoop)
-        //    {
-        //        rawCounter += Time.fixedDeltaTime;
-        //        Debug.Log("Raw counter in first loop: " + rawCounter);
-        //        if(rawCounter > counter)
-        //        {
-        //            this.GetComponent<selectButtons>().happeningText.text = "The enemy is getting ready to strike...";
-        //            inLoop = false;
-        //            inLoop2 = true;
-        //            rawCounter = 0f;
-        //            while (inLoop2)
-        //            {
-        //                rawCounter += Time.fixedDeltaTime;
+           switch (currentTurn)
+           {
+               case turnManager.afterPlayerTurn:
+                Debug.Log("after player turn manager state");
+                buttonsActivated = false;
+                StartCoroutine(afterPlayerTurn());
 
-        //                if (rawCounter > counter)
-        //                {
-        //                    this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
-        //                    inLoop2 = false;
-        //                    inLoop3 = true;
-        //                    rawCounter = 0f;
-        //                    rawCounter = 0f;
-        //                    while (inLoop3)
-        //                    {
-        //                        rawCounter += Time.fixedDeltaTime;
+                   break;
+               case turnManager.enemyTurn:
+                Debug.Log("enemy turn manager state");
+                StartCoroutine(enemyTurn());
 
-        //                        if (rawCounter > counter)
-        //                        {
-        //                            this.GetComponent<selectButtons>().happeningText.text = "It's your turn! Pick an attack!";
-        //                            this.GetComponent<selectButtons>().activateButtons();
-        //                            inLoop3 = false;
-        //                            rawCounter = 0f;
-        //                            break;
+                   break;
+               case turnManager.afterEnemyTurn:
+                Debug.Log("after enemy turn manager state");
+                StartCoroutine(afterEnemyTurn());
+                   break;
 
-        //                        }
+               case turnManager.playerTurn:
+                   Debug.Log("player turn manager state");
+                   break;
 
-        //                    }
-        //                    currentTurn = turnManager.playerTurn;
-        //                    break;
-
-        //                }
-
-
-        //            }
-        //            break;
-
-        //        }
-        //    }
-           
-           
-           
-            
-
-        //}
-
-        
-
-        switch (currentTurn)
-        {
-            case turnManager.afterPlayerTurn:
-                Debug.Log("after player turn");
-                counter = 500f;
-                while (currentTurn == turnManager.afterPlayerTurn)
+            case turnManager.empty:
+                Debug.Log("in empty turn manager state");
+                if (!buttonsActivated)
                 {
-                    rawCounter += Time.fixedDeltaTime;
-                    Debug.Log("After player turn rawTimer counting: " + rawCounter);
-                    if (rawCounter >= counter)
-                    {
-                        Debug.Log("after player turn");
-                        this.GetComponent<selectButtons>().happeningText.text = "The enemy is getting ready to strike...";
-                        currentTurn = turnManager.enemyTurn;
-                        rawCounter = 0f;
-                        break;
-                    }
+                    this.GetComponent<selectButtons>().activateButtons();
 
+                    this.GetComponent<selectButtons>().happeningText.text = "It's your turn! Select an attack!";
+                    buttonsActivated = true;
                 }
-                break;
-            case turnManager.enemyTurn:
-                Debug.Log("enemy turn");
-                rawCounter = 0f;
-                counter = rawCounter + 500f;
-                while (currentTurn == turnManager.enemyTurn)
-                {
-                    rawCounter += Time.fixedDeltaTime;
-                    Debug.Log("Enemy turn rawTimer counting: " + rawCounter);
-                    if (rawCounter >= counter)
-                    {
-                        Debug.Log("enemy turn");
-                        Debug.Log("Raw counter enemy turn = " + rawCounter);
-                        this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
-                        currentTurn = turnManager.afterEnemyTurn;
-                        rawCounter = 0f;
-                        break;
-                    }
-
-                }
-                break;
-            case turnManager.afterEnemyTurn:
-                Debug.Log("after enemy turn");
-                counter = rawCounter + 500f;
-                while (currentTurn == turnManager.afterEnemyTurn)
-                {
-                    rawCounter += Time.fixedDeltaTime;
-                    Debug.Log("After enemy turn rawTimer counting: " + rawCounter);
-                    if (rawCounter >= counter)
-                    {
-                        Debug.Log("after enemy turn");
-                        Debug.Log("Raw counter after enemy turn = " + rawCounter);
-                        this.GetComponent<selectButtons>().happeningText.text = "It's your turn... select an attack!";
-                        this.GetComponent<selectButtons>().activateButtons();
-                        currentTurn = turnManager.playerTurn;
-                        rawCounter = 0f;
-                        break;
-                    }
-
-                }
-
-                break;
-
-            case turnManager.playerTurn:
-                Debug.Log("It's the player's turn!");
+                currentTurn = turnManager.playerTurn;
                 break;
             default:
-                //Nothing will happen
-                break;
-        }
-    
+
+                   break;
+           }
+        
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -241,8 +154,6 @@ public class newVariableHandler : MonoBehaviour
                 this.GetComponent<selectButtons>().resetSelectedAndInitiateAttack();
             }
         }
-
-
     }
 
     public void updateColour(float value, Image bar, int type)
@@ -265,13 +176,7 @@ public class newVariableHandler : MonoBehaviour
         }
     }
 
-    public void toPlayerTurn()
-    {
-        Debug.Log("In to player turn");
-        this.GetComponent<selectButtons>().activateButtons();
-        currentTurn = turnManager.playerTurn;
 
-    }
 
 
     public float valueLimits(float value)
@@ -291,4 +196,50 @@ public class newVariableHandler : MonoBehaviour
 
     }
 
+
+    IEnumerator afterPlayerTurn()
+    {
+        Debug.Log("after player turn coroutine");
+        yield return new WaitForSeconds(3f);
+        doAfterPlayerTurn();
+
+    }
+
+    IEnumerator enemyTurn()
+    {
+        Debug.Log("enemy turn coroutine");
+        yield return new WaitForSeconds(3f);
+        doEnemyTurn();
+    }
+
+    IEnumerator afterEnemyTurn()
+    {
+        Debug.Log("after enemy turn coroutine");
+        yield return new WaitForSeconds(3f);
+        doAfterEnemyTurn();
+       
+
+    }
+
+    public void doAfterPlayerTurn()
+    {
+        Debug.Log("After player turn function");
+        currentTurn = turnManager.enemyTurn;
+
+    }
+
+    public void doEnemyTurn()
+    {
+        Debug.Log("Enemy turn function");
+        currentTurn = turnManager.afterEnemyTurn;
+
+    }
+    public void doAfterEnemyTurn()
+    {
+
+        Debug.Log("After enemy turn function");   
+        currentTurn = turnManager.empty;
+       
+
+    }
 }

@@ -7,51 +7,42 @@ public class playerAttackFunctions : MonoBehaviour
 {
     public Text outputBox;
     int methylphenidateStrength = 5;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void methylphenidateAttack(float energy)
     {
-        variableHandler.enemyHealth -= (methylphenidateStrength * (energy / 400) + 10);
-        variableHandler.playerHitChance += 0.5f;
-        variableHandler.playerEnergy += 10f;
+        Debug.Log("Attacked sucessfully with methylphenidate!");
+        newVariableHandler.enemyHealth -= (methylphenidateStrength * (energy / 400) + 10);
+        newVariableHandler.playerHitChance += 0.5f;
+        newVariableHandler.playerEnergy += 10f;
         outputBox.text = ("Attacked with methylphenidate! Enemy health decreased! Your hit chance has increased, your energy has increased.");
 
     }
 
     public void clobazamAttack(float health)
     {
-        variableHandler.playerHealth += exponentialIncrease(health);
-        variableHandler.enemyEnergy -= 10f;
-        variableHandler.playerHitChance -= 0.5f;
+        newVariableHandler.playerHealth += exponentialIncrease(health);
+        newVariableHandler.enemyEnergy -= 10f;
+        newVariableHandler.playerHitChance -= 0.5f;
 
         outputBox.text = "Used clobazam! Your health has increased! Enemy energy has decreased! Your hit chance has decreased.";
     }
 
     public void SSRIAttack(float energy)
     {
-        variableHandler.enemyHealth -= 5 * variableHandler.SSRICounter;
-        variableHandler.enemyEnergy -= 5 * variableHandler.SSRICounter;
+        newVariableHandler.enemyHealth -= 5 * newVariableHandler.SSRICounter;
+        newVariableHandler.enemyEnergy -= 5 * newVariableHandler.SSRICounter;
 
-        variableHandler.SSRICounter++;
-        outputBox.text = "Attacked with SSRIs! Enemy's health and energy has decreased! Current SSRI strength: " + variableHandler.SSRICounter.ToString() + ".";
+        newVariableHandler.SSRICounter++;
+        outputBox.text = "Attacked with SSRIs! Enemy's health and energy has decreased! Current SSRI strength: " + newVariableHandler.SSRICounter.ToString() + ".";
 
     }
 
     public void betaBlockAttack(float energy)
     {
-        variableHandler.playerEnergy += exponentialIncrease(energy);
-        variableHandler.enemyEnergy -= 5 * energy / 400f;
-        variableHandler.playerHitChance += 0.5f;
+        newVariableHandler.playerEnergy += exponentialIncrease(energy);
+        newVariableHandler.enemyEnergy -= 5 * energy / 400f;
+        newVariableHandler.playerHitChance += 0.5f;
         outputBox.text = "Used beta blockers! Your energy has increased! Enemy energy has decreased! Your hit chance has increased.";
 
     }

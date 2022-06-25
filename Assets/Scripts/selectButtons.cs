@@ -59,41 +59,56 @@ public class selectButtons : MonoBehaviour
 
     public void resetSelectedAndInitiateAttack()
     {
-        switch (selected)
+        if (GetComponent<newVariableHandler>().currentTurn == newVariableHandler.turnManager.playerTurn)
         {
-            case 0:
-                Debug.Log("No attack selected");
-                happeningText.text = "No attack selected";
-                break;
-            case 1:
-                deactivateButtons();
-                Debug.Log("Attacked with methylphenidate");
-                //happeningText.text = "Attacked with methylphenidate";
-                GetComponent<playerAttackFunctions>().methylphenidateAttack(variableHandler.playerEnergy);
-                break;
-            case 2:
-                deactivateButtons();
-                Debug.Log("Attacked with clobazam");
-                //happeningText.text = "Attacked with clobazam";
-                GetComponent<playerAttackFunctions>().clobazamAttack(variableHandler.playerHealth);
-                break;
-            case 3:
-                deactivateButtons();
-                Debug.Log("Attacked with SSRIs");
-                deactivateButtons();
-                //happeningText.text = "Attacked with SSRIs";
-                GetComponent<playerAttackFunctions>().SSRIAttack(variableHandler.playerEnergy);
-                break;
-            case 4:
-                deactivateButtons();
-                Debug.Log("Attacked with Beta Blockers");
-                //happeningText.text = "Attacked with Beta Blockers";
-                GetComponent<playerAttackFunctions>().betaBlockAttack(variableHandler.playerEnergy);
-                break;
-        }
-        selected = 0;
 
-        Debug.Log(selected + ": Reset selected and attack initiated");
+
+            Debug.Log(selected + ": Reset selected and attack initiated");
+            switch (selected)
+            {
+                case 0:
+                    Debug.Log("No attack selected");
+                    happeningText.text = "No attack selected";
+                    selected = 0;
+                    break;
+                case 1:
+                    deactivateButtons();
+                    Debug.Log("Attacked with methylphenidate");
+                    selected = 0;
+                    this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+
+                    GetComponent<playerAttackFunctions>().methylphenidateAttack(newVariableHandler.playerEnergy);
+                    break;
+                case 2:
+                    deactivateButtons();
+                    selected = 0;
+                    Debug.Log("Attacked with clobazam");
+                    this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+
+                    GetComponent<playerAttackFunctions>().clobazamAttack(newVariableHandler.playerHealth);
+                    break;
+                case 3:
+                    deactivateButtons();
+                    selected = 0;
+                    Debug.Log("Attacked with SSRIs");
+                    this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+
+
+                    GetComponent<playerAttackFunctions>().SSRIAttack(newVariableHandler.playerEnergy);
+                    break;
+                case 4:
+                    deactivateButtons();
+                    Debug.Log("Attacked with Beta Blockers");
+                    selected = 0;
+                    this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+
+                    GetComponent<playerAttackFunctions>().betaBlockAttack(newVariableHandler.playerEnergy);
+
+                    break;
+            }
+
+        }
+        
     }
 
     public void closePanel()

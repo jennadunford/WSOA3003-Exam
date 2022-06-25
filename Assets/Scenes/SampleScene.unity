@@ -651,9 +651,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxValue: 400
+  hitChanceText: {fileID: 1511767362}
+  turnText: {fileID: 669674082}
+  playerEnergyBar: {fileID: 1495973886}
+  playerHealthBar: {fileID: 527635364}
+  enemyHealthBar: {fileID: 1544286130}
+  enemyEnergyBar: {fileID: 1905826047}
+  playerHealthText: {fileID: 1381489211}
+  playerEnergyText: {fileID: 15843304}
   currentTurn: 0
   counter: 3
   rawCounter: 0
+  newCounter: 0
+  timer: 0
 --- !u!114 &126537465
 MonoBehaviour:
   m_ObjectHideFlags: 0
