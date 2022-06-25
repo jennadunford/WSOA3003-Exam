@@ -29,7 +29,7 @@ public class attackScript : MonoBehaviour
         }
         else
         {
-            this.GetComponent<variableHandler>().currentTurn = variableHandler.turnManager.afterPlayerTurn;
+            this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
             attackButton.gameObject.SetActive(false);
             this.GetComponent<selectButtons>().deactivateButtons();
         }

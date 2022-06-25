@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - hitChanceText
+  - turnText
+  - eFillHealth
+  - eFillEnergy
+  - pFillHealth
+  - pFillEnergy
+  - eventText
+  - healthValueText
+  - energyValueText
   layers:
   - Default
   - TransparentFX

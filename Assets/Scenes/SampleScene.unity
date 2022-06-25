@@ -593,8 +593,8 @@ GameObject:
   - component: {fileID: 126537462}
   - component: {fileID: 126537463}
   - component: {fileID: 126537465}
-  - component: {fileID: 126537464}
   - component: {fileID: 126537466}
+  - component: {fileID: 126537464}
   m_Layer: 0
   m_Name: gameManager
   m_TagString: Untagged
@@ -647,19 +647,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 126537461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32aa14e5185c33f4b9b9d1e84ab9395a, type: 3}
+  m_Script: {fileID: 11500000, guid: 988d50f6110b6a84daf8134868ebe244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxValue: 400
-  hitChanceText: {fileID: 1511767362}
-  turnText: {fileID: 669674082}
-  playerEnergyBar: {fileID: 1495973886}
-  playerHealthBar: {fileID: 527635364}
-  enemyHealthBar: {fileID: 1544286130}
-  enemyEnergyBar: {fileID: 1905826047}
-  playerHealthText: {fileID: 1922208752}
-  playerEnergyText: {fileID: 1024861014}
   currentTurn: 0
+  counter: 3
+  rawCounter: 0
 --- !u!114 &126537465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,7 +1226,7 @@ GameObject:
   - component: {fileID: 527635364}
   m_Layer: 5
   m_Name: fillHealth
-  m_TagString: Untagged
+  m_TagString: pFillHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1307,7 +1301,7 @@ GameObject:
   - component: {fileID: 669674082}
   m_Layer: 5
   m_Name: turnText
-  m_TagString: Untagged
+  m_TagString: turnText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1893,7 +1887,7 @@ GameObject:
   - component: {fileID: 1024861014}
   m_Layer: 5
   m_Name: energyValue
-  m_TagString: Untagged
+  m_TagString: energyValueText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2748,7 +2742,7 @@ GameObject:
   - component: {fileID: 1495973886}
   m_Layer: 5
   m_Name: fillEnergy
-  m_TagString: Untagged
+  m_TagString: pFillEnergy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2902,7 +2896,7 @@ GameObject:
   - component: {fileID: 1511767362}
   m_Layer: 5
   m_Name: hitChanceText
-  m_TagString: Untagged
+  m_TagString: hitChanceText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2981,7 +2975,7 @@ GameObject:
   - component: {fileID: 1544286130}
   m_Layer: 5
   m_Name: fillHealth
-  m_TagString: Untagged
+  m_TagString: eFillHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4123,7 +4117,7 @@ GameObject:
   - component: {fileID: 1905826047}
   m_Layer: 5
   m_Name: fillEnergy
-  m_TagString: Untagged
+  m_TagString: eFillEnergy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4198,7 +4192,7 @@ GameObject:
   - component: {fileID: 1922208752}
   m_Layer: 5
   m_Name: healthValue
-  m_TagString: Untagged
+  m_TagString: healthValueText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
