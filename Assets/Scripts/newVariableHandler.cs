@@ -217,6 +217,7 @@ public class newVariableHandler : MonoBehaviour
         Debug.Log("after enemy turn coroutine");
         yield return new WaitForSeconds(3f);
         doAfterEnemyTurn();
+        yield break;
        
 
     }
