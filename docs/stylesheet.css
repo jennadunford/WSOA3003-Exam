@@ -1,0 +1,29 @@
+.options {
+  display: block;
+  width: 50%;
+  margin: auto;
+  background-color: pink;
+  border-radius: 3%;
+  position: relative;
+}
+
+.dropDown {
+  padding: 2%;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.attackbutton {
+  margin-left: 50%;
+}
+
+.buttonHolder {
+  padding: 2%;
+}
