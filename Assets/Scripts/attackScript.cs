@@ -22,7 +22,8 @@ public class attackScript : MonoBehaviour
             else
             {
                 Debug.Log("Can attack!");
-               // this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                // this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                newVariableHandler.extraTurn = false;
                 attackButton.gameObject.SetActive(false);
                 this.GetComponent<selectButtons>().deactivateButtons();
             }

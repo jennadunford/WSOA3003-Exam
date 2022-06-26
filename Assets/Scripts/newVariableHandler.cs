@@ -41,6 +41,8 @@ public class newVariableHandler : MonoBehaviour
 
     bool buttonsActivated = false;
 
+    public static bool extraTurn = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,9 +103,9 @@ public class newVariableHandler : MonoBehaviour
                 turnText.color = Color.red;
                 break;
             case (turnManager.afterEnemyTurn):
-                turnText.text = "TURN: ...";
+                turnText.text = "THE ENEMY HAS ATTACKED";
                 this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
-                turnText.color = Color.white;
+                turnText.color = Color.red;
                 break;
         }
 
@@ -127,10 +129,8 @@ public class newVariableHandler : MonoBehaviour
 
                case turnManager.playerTurn:
                    Debug.Log("player turn manager state");
-                   break;
+                
 
-            case turnManager.empty:
-                Debug.Log("in empty turn manager state");
                 if (!buttonsActivated)
                 {
                     this.GetComponent<selectButtons>().activateButtons();
@@ -138,6 +138,10 @@ public class newVariableHandler : MonoBehaviour
                     this.GetComponent<selectButtons>().happeningText.text = "It's your turn! Select an attack!";
                     buttonsActivated = true;
                 }
+                break;
+
+            case turnManager.empty:
+                Debug.Log("in empty turn manager state");
                 currentTurn = turnManager.playerTurn;
                 break;
             default:
@@ -201,7 +205,15 @@ public class newVariableHandler : MonoBehaviour
     {
         Debug.Log("after player turn coroutine");
         yield return new WaitForSeconds(3f);
-        doAfterPlayerTurn();
+        if (extraTurn)
+        {
+            playerExtraTurn();
+        }
+        else
+        {
+            doAfterPlayerTurn();
+        }
+        
 
     }
 
@@ -225,8 +237,14 @@ public class newVariableHandler : MonoBehaviour
     public void doAfterPlayerTurn()
     {
         Debug.Log("After player turn function");
-        currentTurn = turnManager.enemyTurn;
 
+            currentTurn = turnManager.enemyTurn;
+        
+       
+    }
+    public void playerExtraTurn()
+    {
+        currentTurn = turnManager.playerTurn;
     }
 
     public void doEnemyTurn()

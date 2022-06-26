@@ -24,8 +24,8 @@ public class playerAttackFunctions : MonoBehaviour
         newVariableHandler.playerHealth += exponentialIncrease(health);
         newVariableHandler.enemyEnergy -= 10f;
         newVariableHandler.playerHitChance -= 0.5f;
-
-        outputBox.text = "Used clobazam! Your health has increased! Enemy energy has decreased! Your hit chance has decreased.";
+        newVariableHandler.extraTurn = true;
+        outputBox.text = "Used clobazam! Your health has increased! Enemy energy has decreased! Your hit chance has decreased. You've been given an extra turn!";
     }
 
     public void SSRIAttack(float energy)
