@@ -92,7 +92,7 @@ button {
   text-align: center;
   list-style-type: none;
   display: grid;
-  grid-template-columns: 30% 30% 30%;
+  grid-template-columns: 25em 25em 25em;
 }
 
 .mItem {
