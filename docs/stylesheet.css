@@ -44,3 +44,24 @@ button {
   font-family: "Noto Serif Display", sans-serif;
   font-weight: bolder;
 }
+
+.resultsDisplay {
+  width: 80%;
+  height: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  background-color: aquamarine;
+  padding: 1%;
+  margin-top: 2%;
+  border-radius: 3%;
+  justify-content: center;
+}
+
+.resultsBox {
+  display: block;
+  background-color: aliceblue;
+  width: 40%;
+  margin: 3%;
+  text-align: center;
+}

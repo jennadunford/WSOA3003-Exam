@@ -68,6 +68,12 @@ var brainMonsterAttackChance = 0;
 var medimonAttackString = ".";
 var brainMonsterAttackString = ".";
 
+var medimonName;
+var brainMonsterName;
+
+var attackNameMedimon;
+var attackNameBrainMonster;
+
 function updateMedimonSelector() {
   medimonSelected =
     medimonSelector.options[medimonSelector.selectedIndex].value;
@@ -187,6 +193,7 @@ function updateMedimonAttack(attackID) {
 
 function getMedimonAttack(attackList) {
   selectedMedimonAttack = attackList.options[attackList.selectedIndex].value;
+  attackNameMedimon = attackList.options[attackList.selectedIndex].innerHTML;
   console.log(selectedMedimonAttack);
 }
 
@@ -265,6 +272,8 @@ function updateBrainMonsterAttack(attackID) {
 function getBrainMonsterAttack(attackList) {
   selectedBrainMonsterAttack =
     attackList.options[attackList.selectedIndex].value;
+  attackNameBrainMonster =
+    attackList.options[attackList.selectedIndex].innerHTML;
   console.log(selectedBrainMonsterAttack);
 }
 
@@ -316,6 +325,23 @@ function attack() {
     } else {
       console.log("The attack was not very effective...");
     }
+
+    var medimonNameContainer = document.getElementById("medimonName");
+    medimonNameContainer.innerHTML = medimonName;
+    var brainMonsterNameContainer = document.getElementById("brainMonsterName");
+    brainMonsterNameContainer.innerHTML = brainMonsterName;
+
+    var versusTextContainer = document.getElementById("versusText");
+    versusTextContainer.innerHTML = medimonName + " VS " + brainMonsterName;
+
+    var medimonAttackName = document.getElementById("medimonSelectedAttack");
+    medimonAttackName.innerHTML = "Attacking with: " + attackNameMedimon;
+
+    var brainMonsterAttackName = document.getElementById(
+      "brainMonsterSelectedAttack"
+    );
+    brainMonsterAttackName.innerHTML =
+      "Attacking with: " + attackNameBrainMonster;
   }
 
   //If any values are zero show error
@@ -335,6 +361,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
   console.log("Selected brain monster number: " + brainMonsterSelectedX);
   switch (medimonAttackX) {
     case "m1":
+      medimonName = "Methylphenidragon";
       attackStrength = mEnergyFire;
       medimonAttackChance = 80;
       if ((brainMonsterSelectedX == "2") | (brainMonsterSelectedX == "4")) {
@@ -347,6 +374,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "m2":
+      medimonName = "Methylphenidragon";
       attackStrength = mFireFocus;
       medimonAttackChance = 90;
       if ((brainMonsterSelectedX == "2") | (brainMonsterSelectedX == "4")) {
@@ -359,6 +387,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "m3":
+      medimonName = "Methylphenidragon";
       attackStrength = mFireEuphor;
       medimonAttackChance = 70;
       if ((brainMonsterSelectedX == "2") | (brainMonsterSelectedX == "4")) {
@@ -371,6 +400,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "c1":
+      medimonName = "Clobazore";
       attackStrength = cRestSpirit;
       medimonAttackChance = 60;
       if ((brainMonsterSelectedX == "1") | (brainMonsterSelectedX == "4")) {
@@ -383,6 +413,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "c2":
+      medimonName = "Clobazore";
       attackStrength = cCastShadow;
       medimonAttackChance = 70;
       if (
@@ -399,6 +430,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "c3":
+      medimonName = "Clobazore";
       attackStrength = cSpiritCour;
       medimonAttackChance = 80;
       if ((brainMonsterSelectedX == "1") | (brainMonsterSelectedX == "3")) {
@@ -411,6 +443,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "s1":
+      medimonName = "Seratonia Guardian";
       attackStrength = sBalanceAct;
       medimonAttackChance = 90;
       if ((brainMonsterSelectedX == "1") | (brainMonsterSelectedX == "2")) {
@@ -423,6 +456,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "s2":
+      medimonName = "Seratonia Guardian";
       attackStrength = sBanishSad;
       medimonAttackChance = 80;
       if ((brainMonsterSelectedX == "2") | (brainMonsterSelectedX == "3")) {
@@ -431,6 +465,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "s3":
+      medimonName = "Seratonia Guardian";
       attackStrength = sBanishFear;
       medimonAttackChance = 80;
       if (
@@ -443,6 +478,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "b1":
+      medimonName = "Beta Shield Mage";
       attackStrength = bBlockStress;
       medimonAttackChance = 80;
       if ((brainMonsterSelectedX == "3") | (brainMonsterSelectedX == "4")) {
@@ -455,6 +491,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "b2":
+      medimonName = "Beta Shield Mage";
       attackStrength = bParryFear;
       medimonAttackChance = 80;
       if ((brainMonsterSelectedX == "1") | (brainMonsterSelectedX == "3")) {
@@ -467,6 +504,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "b3":
+      medimonName = "Beta Shield Mage";
       attackStrength = bCastAwayRestless;
       medimonAttackChance = 70;
       if ((brainMonsterSelectedX == "1") | (brainMonsterSelectedX == "4")) {
@@ -479,6 +517,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       }
       break;
     case "cf1":
+      medimonName = "Care Fairy";
       attackStrength = scNatureGrace;
       medimonAttackChance = 80;
       if (brainMonsterSelectedX == "4") {
@@ -496,6 +535,7 @@ function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
       break;
 
     case "cf2":
+      medimonName = "Care Fairy";
       attackStrength = scDrinkPeace;
       medimonAttackChance = 70;
       if (brainMonsterSelectedX == "4") {
@@ -521,6 +561,7 @@ function attackCalculatorBrainMonster(
   monsterAttackStrength = 0;
   switch (brainMonsterAttackX) {
     case "anx1":
+      brainMonsterName = "Anxor Wraith";
       monsterAttackStrength = anxBaneOfHeart;
       switch (medimonAttackSelectedX) {
         case "m1":
@@ -583,6 +624,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "anx2":
+      brainMonsterName = "Anxor Wraith";
       monsterAttackStrength = anxDestroyFocus;
       switch (medimonAttackSelectedX) {
         case "m1":
@@ -644,6 +686,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "anx3":
+      brainMonsterName = "Anxor Wraith";
       monsterAttackStrength = anxOverwhTerror;
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
@@ -706,6 +749,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "dk1":
+      brainMonsterName = "Dark Ghost";
       monsterAttackStrength = depEndlessSleep;
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
@@ -768,6 +812,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "dk2":
+      brainMonsterName = "Dark Ghost";
       monsterAttackStrength = depBlackenSun;
       switch (medimonAttackSelectedX) {
         case "m1":
@@ -829,6 +874,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "dk3":
+      brainMonsterName = "Dark Ghost";
       monsterAttackStrength = depDrainEnergy;
       switch (medimonAttackSelectedX) {
         case "m1":
@@ -890,6 +936,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "sb1":
+      brainMonsterName = "Screaming Banshee";
       monsterAttackStrength = trSoulDrain;
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
@@ -952,6 +999,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "sb2":
+      brainMonsterName = "Screaming Banshee";
       monsterAttackStrength = trTerrorStrike;
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
@@ -1014,6 +1062,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "sb3":
+      brainMonsterName = "Screaming Banshee";
       monsterAttackStrength = trAbandonHope;
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
@@ -1076,6 +1125,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "sd1":
+      brainMonsterName = "Soul Drainer";
       monsterAttackStrength = brnCastWorthless;
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
@@ -1138,6 +1188,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "sd2":
+      brainMonsterName = "Soul Drainer";
       monsterAttackStrength = brnStealSleep;
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
@@ -1200,6 +1251,7 @@ function attackCalculatorBrainMonster(
       }
       break;
     case "sd3":
+      brainMonsterName = "Soul Drainer";
       brainMonsterAttackChance = 80;
       monsterAttackStrength = brnCauseConfusion;
       switch (medimonAttackSelectedX) {
