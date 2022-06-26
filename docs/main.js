@@ -341,6 +341,8 @@ function attack() {
       console.log("The attack was not very effective...");
     }
 
+    attackCalculatorMedimon(selectedMedimonAttack, brainMonsterSelected);
+
     var descriptionContainerM = document.getElementById(
       "medimonSelectedAttackDescription"
     );
