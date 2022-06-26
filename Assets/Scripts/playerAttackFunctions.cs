@@ -25,7 +25,9 @@ public class playerAttackFunctions : MonoBehaviour
         newVariableHandler.enemyEnergy -= 10f;
         newVariableHandler.playerHitChance -= 0.5f;
         newVariableHandler.extraTurn = true;
-        outputBox.text = "Used clobazam! Your health has increased! Enemy energy has decreased! Your hit chance has decreased. You've been given an extra turn!";
+        outputBox.text = "Used clobazam! Your health has increased! Enemy energy has decreased! Your hit chance has decreased. You've been given an extra turn! You will not be able to use clobazam for one turn.";
+        this.GetComponent<selectButtons>().clobButton.enabled = false;
+        this.GetComponent<selectButtons>().clobButton.image.color = Color.gray;
     }
 
     public void SSRIAttack(float energy)

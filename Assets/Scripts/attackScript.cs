@@ -25,6 +25,8 @@ public class attackScript : MonoBehaviour
                 // this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
                 newVariableHandler.extraTurn = false;
                 attackButton.gameObject.SetActive(false);
+                this.GetComponent<selectButtons>().clobButton.enabled = true;
+                this.GetComponent<selectButtons>().clobButton.image.color = Color.white;
                 this.GetComponent<selectButtons>().deactivateButtons();
             }
         }
