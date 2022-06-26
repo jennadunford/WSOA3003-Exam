@@ -4,43 +4,174 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Noto+Serif+Display"
+    />
     <link rel="stylesheet" href="stylesheet.css" />
     <title>BRAIN Prototype</title>
   </head>
   <body>
     <h1>Brain Prototype 2</h1>
     <h2>
-      Select a BRAIN AID, and an attack and select an ENEMY and an attack, then
+      Select a MEDIMON, and an attack and select an ENEMY and an attack, then
       press "ATTACK" to view results.
     </h2>
 
     <div class="options">
       <section class="dropDown">
-        <label for="brainAid">Choose a Brain Aid</label>
+        <label for="brainAid">Choose a Medimon</label>
 
-        <select name="brainAid" id="brainAidSelector">
-          <option value="1">METHYLPHENIDATE</option>
-          <option value="2">CLOBAZAM</option>
-          <option value="3">SSRIs</option>
-          <option value="4">BETA BLOCKERS</option>
-          <option value="5">SELF CARE</option>
+        <select
+          name="brainAid"
+          id="brainAidSelector"
+          onChange="updateMedimonSelector()"
+        >
+          <option value="0">Please select one</option>
+          <option value="1">Methylphenidragon</option>
+          <option value="2">Clobazore</option>
+          <option value="3">Seratonia Guardian</option>
+          <option value="4">Beta Shield Mage</option>
+          <option value="5">Care Fairy</option>
+        </select>
+      </section>
+      <section class="dropDown">
+        <label for="attackList">Choose your Medimon's Attack!</label>
+
+        <select
+          name="attackList"
+          id="methylpheniDragonAttacks"
+          class="hidden"
+          onChange="updateMedimonAttack('methylpheniDragonAttacks')"
+        >
+          <option value="0">Please select one</option>
+          <option value="m1">Energy Fire</option>
+          <option value="m2">Fire Focus</option>
+          <option value="m3">Fire of Euphoria</option>
+        </select>
+
+        <select
+          name="attackList"
+          id="clobaZoreAttacks"
+          class="hidden"
+          onChange="updateMedimonAttack('clobaZoreAttacks')"
+        >
+          <option value="0">Please select one</option>
+          <option value="c1">Restful Spirit</option>
+          <option value="c2">Cast Away Shadows</option>
+          <option value="c3">Spirit of Courage</option>
+        </select>
+
+        <select
+          name="attackList"
+          id="seratoniaGuardian"
+          class="hidden"
+          onChange="updateMedimonAttack('seratoniaGuardian')"
+        >
+          <option value="0">Please select one</option>
+          <option value="s1">Balancing Act</option>
+          <option value="s2">Banishing of Sadness</option>
+          <option value="s3">Banishing of Fear</option>
+        </select>
+
+        <select
+          name="attackList"
+          id="betaShieldMage"
+          class="hidden"
+          onChange="updateMedimonAttack('betaShieldMage')"
+        >
+          <option value="0">Please select one</option>
+          <option value="b1">Block Stress</option>
+          <option value="b2">Parry Fear</option>
+          <option value="b3">Cast Away Restlessness</option>
+        </select>
+
+        <select
+          name="attackList"
+          id="careFairy"
+          class="hidden"
+          onChange="updateMedimonAttack('careFairy')"
+        >
+          <option value="0">Please select one</option>
+          <option value="cf1">Nature's Grace</option>
+          <option value="cf2">Drink of Peace</option>
         </select>
       </section>
 
       <section class="dropDown">
         <label for="brainMonster">Choose a Brain Monster</label>
 
-        <select name="brainAid" id="brainAidSelector">
-          <option value="1">ANXIETY</option>
-          <option value="2">DEPRESSION</option>
-          <option value="3">TRAUMATIC SITUATIONS</option>
-          <option value="4">BURNOUT</option>
+        <select
+          name="brainMonster"
+          id="brainMonsterSelector"
+          onChange="updateMonsterAttack()"
+        >
+          <option value="0">Please select one</option>
+          <option value="1">Anxorwraith</option>
+          <option value="2">Dark Ghost</option>
+          <option value="3">Screaming Banshee</option>
+          <option value="4">Soul Drainer</option>
+        </select>
+      </section>
+
+      <section class="dropDown">
+        <label for="attackListMonster"
+          >Choose your Brain Monster's Attack!</label
+        >
+
+        <select
+          name="attackListMonster"
+          id="anxorWraith"
+          class="hidden"
+          onChange="updateBrainMonsterAttack('anxorWraith')"
+        >
+          <option value="0">Please select one</option>
+          <option value="anx1">Bane of Heart</option>
+          <option value="anx2">Destroy Focus</option>
+          <option value="anx3">Overwhelming Terror</option>
+        </select>
+
+        <select
+          name="attackListMonster"
+          id="darkGhost"
+          class="hidden"
+          onChange="updateBrainMonsterAttack('darkGhost')"
+        >
+          <option value="0">Please select one</option>
+          <option value="dk1">An Endless Sleep</option>
+          <option value="dk2">Blacken the Sun</option>
+          <option value="dk3">Drain Energy</option>
+        </select>
+
+        <select
+          name="attackListMonster"
+          id="screamingBanshee"
+          class="hidden"
+          onChange="updateBrainMonsterAttack('screamingBanshee')"
+        >
+          <option value="0">Please select one</option>
+          <option value="sb1">Soul Drain</option>
+          <option value="sb2">Terror Strike</option>
+          <option value="sb3">Abandon Hope</option>
+        </select>
+
+        <select
+          name="attackListMonster"
+          id="soulDrainer"
+          class="hidden"
+          onChange="updateBrainMonsterAttack('soulDrainer')"
+        >
+          <option value="0">Please select one</option>
+          <option value="sd1">Cast Worthlessness</option>
+          <option value="sd2">Steal Sleep</option>
+          <option value="sd3">Cause Confusion</option>
         </select>
       </section>
 
       <section class="buttonHolder">
-        <button class="attackbutton">ATTACK</button>
+        <button onclick="attack()" class="attackbutton">Attack</button>
       </section>
     </div>
   </body>
+  <script src="main.js"></script>
 </html>
