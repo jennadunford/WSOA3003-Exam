@@ -1,5 +1,8 @@
 body {
   font-family: "Noto Serif Display", sans-serif;
+  color: white;
+  background-color: black;
+  font-weight: bold;
 }
 .options {
   display: block;
@@ -8,6 +11,11 @@ body {
   background-color: pink;
   border-radius: 3%;
   position: relative;
+  color: black;
+}
+
+.cen {
+  text-align: center;
 }
 
 .dropDown {
@@ -56,12 +64,38 @@ button {
   margin-top: 2%;
   border-radius: 3%;
   justify-content: center;
+  color: black;
 }
 
 .resultsBox {
   display: block;
   background-color: aliceblue;
-  width: 40%;
+  width: 60%;
   margin: 3%;
   text-align: center;
+}
+
+.explanations {
+  display: block;
+  background-color: pink;
+  color: black;
+}
+
+.textHolder {
+  width: 80%;
+  margin: auto;
+  padding: 1%;
+  font-weight: bold;
+}
+
+.mTable {
+  text-align: center;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+}
+
+.mItem {
+  border-width: 2px;
+  border-style: solid;
 }

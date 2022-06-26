@@ -14,9 +14,9 @@ var attacker = 0;
 //Trauma = 3
 //Burnout = 4
 
-var mEnergyFire = 20;
-var mFireFocus = 25;
-var mFireEuphor = 30;
+var mEnergyFire = 35;
+var mFireFocus = 40;
+var mFireEuphor = 45;
 
 var cRestSpirit = 30;
 var cCastShadow = 20;
@@ -73,6 +73,10 @@ var brainMonsterName;
 
 var attackNameMedimon;
 var attackNameBrainMonster;
+
+var mResultOutcome;
+
+var medimonAttackStrength;
 
 function updateMedimonSelector() {
   medimonSelected =
@@ -314,17 +318,50 @@ function attack() {
         "%"
     );
 
-    if (
-      attackCalculatorMedimon(selectedMedimonAttack, brainMonsterSelected) >
-      attackCalculatorBrainMonster(
-        selectedMedimonAttack,
-        selectedBrainMonsterAttack
-      )
-    ) {
+    medimonAttackStrength = attackCalculatorMedimon(
+      selectedMedimonAttack,
+      brainMonsterSelected
+    );
+
+    if (medimonAttackStrength >= monsterAttackStrength) {
       console.log("Your medimon's attack was effective!");
+      mResultOutcome =
+        "The strength of the " +
+        medimonName +
+        "'s attack was " +
+        attackCalculatorMedimon(selectedMedimonAttack, brainMonsterSelected) +
+        ". The attack was effective!";
     } else {
+      mResultOutcome =
+        "The strength of the " +
+        medimonName +
+        "'s attack was " +
+        attackCalculatorMedimon(selectedMedimonAttack, brainMonsterSelected) +
+        ". The attack was not very effective...";
       console.log("The attack was not very effective...");
     }
+
+    var descriptionContainerM = document.getElementById(
+      "medimonSelectedAttackDescription"
+    );
+    descriptionContainerM.innerHTML = getMedimonAttackDescription(
+      selectedMedimonAttack
+    );
+
+    var descriptionContainerB = document.getElementById(
+      "brainMonsterSelectedAttackDescription"
+    );
+    descriptionContainerB.innerHTML = getBrainMonsterAttackDescription(
+      selectedBrainMonsterAttack
+    );
+
+    var hitContainerB = document.getElementById("hitChanceContainerB");
+    hitContainerB.innerHTML =
+      "Chance of Successful Attack: " + brainMonsterAttackChance + "%";
+
+    var hitChanceContainerM = document.getElementById("hitChanceContainerM");
+    hitChanceContainerM.innerHTML =
+      "Chance of Successful Attack: " + medimonAttackChance + "%";
 
     var medimonNameContainer = document.getElementById("medimonName");
     medimonNameContainer.innerHTML = medimonName;
@@ -344,16 +381,35 @@ function attack() {
       "Attacking with: " + attackNameBrainMonster;
   }
 
-  //If any values are zero show error
+  var MResultContainer = document.getElementById("medimonResults");
+  MResultContainer.innerHTML = mResultOutcome;
 
-  //For the medimon
-  //Get what the base attack will be
-  //For the brain monster
-  //Get what the base attack will be
-  //Check if multiplier is possible based on opponent
-  //Check if divider is possible based on opponent
-  //Check what hit chance is based on opponent
-  //Generate an attack
+  var MChanceResultContainer = document.getElementById("medimonHitResult");
+  if (checkSucess(medimonAttackChance)) {
+    MChanceResultContainer.innerHTML = "The medimon's attack was sucessful!";
+  } else {
+    MChanceResultContainer.innerHTML = "The medimon's attack missed...";
+  }
+  var BResultContainer = document.getElementById("brainMonResults");
+  BResultContainer.innerHTML =
+    "Your opponent attacked with a strength of: " +
+    monsterAttackStrength.toFixed(2) +
+    ".";
+  var BChanceResultContainer = document.getElementById("brainMonHitResult");
+  if (checkSucess(brainMonsterAttackChance)) {
+    BChanceResultContainer.innerHTML = "Your opponents attack was sucessful...";
+  } else {
+    BChanceResultContainer.innerHTML = "Your opponents attack missed!";
+  }
+}
+
+function checkSucess(chance) {
+  num = Math.floor(Math.random() * 101);
+  if (num <= chance) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function attackCalculatorMedimon(medimonAttackX, brainMonsterSelectedX) {
@@ -695,48 +751,48 @@ function attackCalculatorBrainMonster(
           brainMonsterAttackChance = 95;
           break;
         case "m2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 85;
           break;
         case "m3":
           monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          brainMonsterAttackChance = 90;
           break;
         case "c1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 70;
           break;
         case "c2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 72;
           break;
         case "c3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 50;
           break;
         case "s1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 65;
           break;
         case "s2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 75;
           break;
         case "s3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 55;
           break;
         case "b1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 86;
           break;
         case "b2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 75;
           break;
         case "b3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 65;
           break;
         case "cf1":
           monsterAttackStrength = monsterAttackStrength * 5;
@@ -754,52 +810,52 @@ function attackCalculatorBrainMonster(
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 55;
           break;
         case "m2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 60;
           break;
         case "m3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 5;
+          brainMonsterAttackChance = 64;
           break;
         case "c1":
           monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          brainMonsterAttackChance = 70;
           break;
         case "c2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 85;
           break;
         case "c3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 65;
           break;
         case "s1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 65;
           break;
         case "s2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 55;
           break;
         case "s3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 60;
           break;
         case "b1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 60;
           break;
         case "b2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 70;
           break;
         case "b3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 75;
           break;
         case "cf1":
           monsterAttackStrength = monsterAttackStrength * 5;
@@ -816,52 +872,51 @@ function attackCalculatorBrainMonster(
       monsterAttackStrength = depBlackenSun;
       switch (medimonAttackSelectedX) {
         case "m1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 70;
           break;
         case "m2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 65;
           break;
         case "m3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 60;
           break;
         case "c1":
           monsterAttackStrength = monsterAttackStrength * 4;
           brainMonsterAttackChance = 95;
           break;
         case "c2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 75;
           break;
         case "c3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 65;
           break;
         case "s1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 55;
           break;
         case "s2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 65;
           break;
         case "s3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 65;
           break;
         case "b1":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 55;
           break;
         case "b2":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 75;
           break;
         case "b3":
-          monsterAttackStrength = monsterAttackStrength * 4;
-          brainMonsterAttackChance = 95;
+          brainMonsterAttackChance = 80;
           break;
         case "cf1":
           monsterAttackStrength = monsterAttackStrength * 6;
@@ -886,7 +941,7 @@ function attackCalculatorBrainMonster(
           brainMonsterAttackChance = 80;
           break;
         case "m3":
-          monsterAttackStrength = monsterAttackStrength * 3;
+          monsterAttackStrength = monsterAttackStrength / 3;
           brainMonsterAttackChance = 60;
           break;
         case "c1":
@@ -1310,4 +1365,122 @@ function attackCalculatorBrainMonster(
       break;
   }
   return monsterAttackStrength.toFixed(2);
+}
+
+function getMedimonAttackDescription(medimonAttack) {
+  var output;
+  switch (medimonAttack) {
+    case "m1":
+      output =
+        "The methylphenidragon takes in a deep breath and blows a bright and all encompassing fire, the flames fill you with the energy to damage your opponent.";
+      break;
+    case "m2":
+      output =
+        "You stare deep into the eyes of your dragon companion, you feel its flames give you the concentration you need to face your opponent.";
+      break;
+    case "m3":
+      output =
+        "Just as you feel you are losing hope and becoming empty, the dragon casts its flames of euphoria, filling you with determination and strength to battle your opponent.";
+      break;
+    case "c1":
+      output =
+        "The magic of the clobazore rests your spirit, filling you with calm, you do not fear facing your opponent.";
+      break;
+    case "c2":
+      output =
+        "The clobazore leaps in front of you, vanquishing shadows of doubt, and bringing you calm and determination to face your opponent.";
+      break;
+    case "c3":
+      output =
+        "In your darkest hours, the clobazore helps you to clear your mind of fear and give you the spirit of courage to engage your enemies.";
+      break;
+    case "s1":
+      output =
+        "The Seratonia Guardian is summoned, she uses her powers to balance the pesky chemicals within your mind, allowing you to face your fears and your enemies.";
+      break;
+    case "s2":
+      output =
+        "The Seratonia Guardian banishes away your sadness and despair, allowing you to face your opponent with a clear mind and heart";
+      break;
+    case "s3":
+      output =
+        "You call upon the Seratonia Guardian for help - your fear has been banished, you are no longer afraid to face the monster before you";
+      break;
+    case "b1":
+      output =
+        "The Beta Shield Mage uses their strong armour to shield you from the stresses that your enemy places upon you, allowing for you to attack.";
+      break;
+    case "b2":
+      output =
+        "The dark sword of fear swings towards you, but it is blocked and parried with the help of the shield mage, you are able to attempt to strike your opponent.";
+      break;
+    case "b3":
+      output =
+        "The Beta Shield Mage fills you with determination, you shake off your restlessness, you can face your opponent.";
+      break;
+    case "cf1":
+      output =
+        "The Care Fairy's aid is limited, but she bathes you in the beauty of nature and fresh air, you are given some strength to face your opponent.";
+      break;
+    case "cf2":
+      output =
+        "The Care Fairy's aid is limited, but she gifts you with warm drinks that fill you with peace, you have some strength to face your opponent.";
+      break;
+  }
+  return output;
+}
+
+function getBrainMonsterAttackDescription(brainMonsterAttack) {
+  var output = "";
+  switch (brainMonsterAttack) {
+    case "anx1":
+      output =
+        "Your heart is racing. The Anxor Wraith has a grip upon your physical form... your heart races, your palms sweat, tears fall without any clear reason. The wraith's hold on you is strong.";
+      break;
+    case "anx2":
+      output =
+        "The Anxor Wraith surrounds you... clouds your thoughts... you cannot focus on anything! The world is turning too fast, time is moving too rapidly... you are filled with confusion.";
+      break;
+    case "anx3":
+      output =
+        "The Anxor Wraith overwhelms you with fear and terror... no place is safe, your mind becomes a prison.";
+      break;
+    case "dk1":
+      output =
+        "The dark ghost is before you. You suddenly feel a tiredness that you have never experienced before... the very act of standing and keeping your eyes open drains you... even though there is no reason to be tired.";
+      break;
+    case "dk2":
+      output =
+        "The dark ghost uses its demonic power to blacken out your sun - your world is filled with darkness... hopelessness...";
+      break;
+    case "dk3":
+      output =
+        "The dark ghost sucks the life and energy from within you - it is terrifying and deeply disturbing for your mind.";
+      break;
+    case "sb1":
+      output =
+        "The appearance of the screaming banshee fills you fear and dread - your soul becomes drained, your body becomes heavy...";
+      break;
+    case "sb2":
+      output =
+        "Terror! You are struck by the screaming banshee, their screams drown your world...";
+      break;
+    case "sb3":
+      output =
+        "The screaming banshee fills your world with confusiona and fear and dread - you can see nothing ahead - you abandon all hope.";
+      break;
+    case "sd1":
+      output =
+        "The soul drainer fills you with clouds of worthlessness and doubt... you feel as if you can never do anything right, even though you always try so hard.";
+      break;
+    case "sd2":
+      output =
+        "The terrifying soul drainer steals away your rest and sleep - you are tired and and lose strength...";
+      break;
+    case "sd3":
+      output =
+        "The soul drainer fills your mind with confusion and worry - you cannot think straight... nothing seems to make sense";
+      break;
+  }
+  return output;
 }
