@@ -292,7 +292,7 @@ function attack() {
     (selectedBrainMonsterAttack == null) |
     (selectedMedimonAttack == null) |
     (medimonSelected == null) |
-    (selectedMedimonAttack == null)
+    (brainMonsterSelected == null)
   ) {
     alert(
       "Please make sure you've selected a medimon, a brain monster and attacks for both!"
@@ -403,6 +403,16 @@ function attack() {
   } else {
     BChanceResultContainer.innerHTML = "Your opponents attack missed!";
   }
+
+  selectedBrainMonsterAttack = null;
+  selectedMedimonAttack = null;
+  medimonSelected = null;
+  brainMonsterSelected = null;
+
+  brainMonsterSelector.selectedIndex = 0;
+  medimonSelector.selectedIndex = 0;
+
+  hideSelectors();
 }
 
 function checkSucess(chance) {
@@ -1485,4 +1495,35 @@ function getBrainMonsterAttackDescription(brainMonsterAttack) {
       break;
   }
   return output;
+}
+
+function hideSelectors() {
+  document.getElementById("methylpheniDragonAttacks").classList.add("hidden");
+  document
+    .getElementById("methylpheniDragonAttacks")
+    .classList.remove("visible");
+
+  document.getElementById("clobaZoreAttacks").classList.add("hidden");
+  document.getElementById("clobaZoreAttacks").classList.remove("visible");
+
+  document.getElementById("seratoniaGuardian").classList.add("hidden");
+  document.getElementById("seratoniaGuardian").classList.remove("visible");
+
+  document.getElementById("betaShieldMage").classList.add("hidden");
+  document.getElementById("betaShieldMage").classList.remove("visible");
+
+  document.getElementById("careFairy").classList.add("hidden");
+  document.getElementById("careFairy").classList.remove("visible");
+
+  document.getElementById("anxorWraith").classList.add("hidden");
+  document.getElementById("anxorWraith").classList.remove("visible");
+
+  document.getElementById("darkGhost").classList.add("hidden");
+  document.getElementById("darkGhost").classList.remove("visible");
+
+  document.getElementById("screamingBanshee").classList.add("hidden");
+  document.getElementById("screamingBanshee").classList.remove("visible");
+
+  document.getElementById("soulDrainer").classList.add("hidden");
+  document.getElementById("soulDrainer").classList.remove("visible");
 }
