@@ -569,35 +569,62 @@ function attackCalculatorBrainMonster(
       break;
     case "anx2":
       monsterAttackStrength = anxDestroyFocus;
-      brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 70;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 80;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 90;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 70;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 60;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 80;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 90;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 60;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 60;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 70;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 60;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength * 5;
+          brainMonsterAttackChance = 90;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
       }
       break;
@@ -606,32 +633,60 @@ function attackCalculatorBrainMonster(
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength * 5;
+          brainMonsterAttackChance = 95;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
       }
       break;
@@ -640,100 +695,182 @@ function attackCalculatorBrainMonster(
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength * 5;
+          brainMonsterAttackChance = 95;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength * 6;
+          brainMonsterAttackChance = 98;
           break;
       }
       break;
     case "dk2":
       monsterAttackStrength = depBlackenSun;
-      brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength * 6;
+          brainMonsterAttackChance = 95;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength * 5;
+          brainMonsterAttackChance = 95;
           break;
       }
       break;
     case "dk3":
       monsterAttackStrength = depDrainEnergy;
-      brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 70;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 80;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 60;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 90;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 80;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 95;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength / 5;
+          brainMonsterAttackChance = 70;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 60;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 70;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 80;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 70;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 75;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength * 6;
+          brainMonsterAttackChance = 95;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength * 5;
+          brainMonsterAttackChance = 95;
           break;
       }
       break;
@@ -742,32 +879,60 @@ function attackCalculatorBrainMonster(
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 5;
+          brainMonsterAttackChance = 85;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 95;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 75;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 85;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 75;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 85;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 90;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 80;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 70;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 80;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 75;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 95;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 80;
           break;
       }
       break;
@@ -776,32 +941,60 @@ function attackCalculatorBrainMonster(
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 5;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 95;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 80;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 75;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 70;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 65;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 70;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 80;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 70;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength / 5;
+          brainMonsterAttackChance = 60;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 50;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 90;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 80;
           break;
       }
       break;
@@ -810,32 +1003,60 @@ function attackCalculatorBrainMonster(
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 2;
+          brainMonsterAttackChance = 80;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 3;
+          brainMonsterAttackChance = 90;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 70;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 50;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 45;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 70;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 60;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 60;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 80;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 75;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 80;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 85;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 80;
           break;
       }
       break;
@@ -844,32 +1065,60 @@ function attackCalculatorBrainMonster(
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 70;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength / 4;
+          brainMonsterAttackChance = 80;
           break;
       }
       break;
@@ -878,32 +1127,60 @@ function attackCalculatorBrainMonster(
       brainMonsterAttackChance = 80;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 80;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 70;
           break;
       }
       break;
@@ -912,32 +1189,60 @@ function attackCalculatorBrainMonster(
       monsterAttackStrength = brnCauseConfusion;
       switch (medimonAttackSelectedX) {
         case "m1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "m3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "c3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "s3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b1":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b2":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "b3":
+          monsterAttackStrength = monsterAttackStrength * 4;
+          brainMonsterAttackChance = 95;
           break;
         case "cf1":
+          monsterAttackStrength = monsterAttackStrength / 3;
+          brainMonsterAttackChance = 85;
           break;
         case "cf2":
+          monsterAttackStrength = monsterAttackStrength / 2;
+          brainMonsterAttackChance = 90;
           break;
       }
       break;
