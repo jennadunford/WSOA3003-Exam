@@ -33,7 +33,7 @@ public class selectButtons : MonoBehaviour
     public void selectMethyl()
     {
         selected = 1;
-        Debug.Log(selected + ": Methylphenidate is selected");
+       // Debug.Log(selected + ": Methylphenidate is selected");
     
 
     }
@@ -41,68 +41,102 @@ public class selectButtons : MonoBehaviour
     public void selectClob()
     {
         selected = 2;
-        Debug.Log(selected + ": Clobazam is selected");
+        //Debug.Log(selected + ": Clobazam is selected");
     }
 
     public void selectSSRI()
     {
         selected = 3;
-        Debug.Log(selected + ": SSRI is selected");
+       // Debug.Log(selected + ": SSRI is selected");
     }
 
     public void selectBeta()
     {
 
         selected = 4;
-        Debug.Log(selected + ": Beta blockers is selected");
+       // Debug.Log(selected + ": Beta blockers is selected");
     }
 
     public void resetSelectedAndInitiateAttack()
     {
         if (GetComponent<newVariableHandler>().currentTurn == newVariableHandler.turnManager.playerTurn)
         {
+            
 
 
-            Debug.Log(selected + ": Reset selected and attack initiated");
+           // Debug.Log(selected + ": Reset selected and attack initiated");
             switch (selected)
             {
                 case 0:
-                    Debug.Log("No attack selected");
+                    //Debug.Log("No attack selected");
                     happeningText.text = "No attack selected";
                     selected = 0;
                     break;
                 case 1:
                     deactivateButtons();
-                    Debug.Log("Attacked with methylphenidate");
+                    //Debug.Log("Attacked with methylphenidate");
                     selected = 0;
-                    this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                    if (attackSucessful(newVariableHandler.playerHitChance))
+                    {
+                        this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                        GetComponent<playerAttackFunctions>().methylphenidateAttack(newVariableHandler.playerEnergy);
+                    }
+                    else
+                    {
+                        GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                        GetComponent<playerAttackFunctions>().missedAttack();
+                    }
+                   
 
-                    GetComponent<playerAttackFunctions>().methylphenidateAttack(newVariableHandler.playerEnergy);
+                 
                     break;
                 case 2:
                     deactivateButtons();
                     selected = 0;
-                    Debug.Log("Attacked with clobazam");
-                    this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
-
-                    GetComponent<playerAttackFunctions>().clobazamAttack(newVariableHandler.playerHealth);
+                    //Debug.Log("Attacked with clobazam");
+                    if (attackSucessful(newVariableHandler.playerHitChance))
+                    {
+                        this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                        GetComponent<playerAttackFunctions>().clobazamAttack(newVariableHandler.playerHealth);
+                    }
+                    else
+                    {
+                        this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                        GetComponent<playerAttackFunctions>().missedAttack();
+                    }
+                    
                     break;
                 case 3:
                     deactivateButtons();
                     selected = 0;
-                    Debug.Log("Attacked with SSRIs");
-                    this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
-
-
-                    GetComponent<playerAttackFunctions>().SSRIAttack(newVariableHandler.playerEnergy);
+                    //Debug.Log("Attacked with SSRIs");
+                    if (attackSucessful(newVariableHandler.playerHitChance))
+                    {
+                        this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                        GetComponent<playerAttackFunctions>().SSRIAttack(newVariableHandler.playerEnergy);
+                    }
+                    else
+                    {
+                        this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                        GetComponent<playerAttackFunctions>().missedAttack();
+                    }
+                  
                     break;
                 case 4:
                     deactivateButtons();
-                    Debug.Log("Attacked with Beta Blockers");
+                    //Debug.Log("Attacked with Beta Blockers");
                     selected = 0;
-                    this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                    if (attackSucessful(newVariableHandler.playerHitChance))
+                    {
+                        this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                        GetComponent<playerAttackFunctions>().betaBlockAttack(newVariableHandler.playerEnergy);
+                    }
+                    else
+                    {
+                        this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+                        GetComponent<playerAttackFunctions>().missedAttack();
+                    }
 
-                    GetComponent<playerAttackFunctions>().betaBlockAttack(newVariableHandler.playerEnergy);
 
                     break;
             }
@@ -168,6 +202,21 @@ public class selectButtons : MonoBehaviour
         betaButton.gameObject.SetActive(true);
         attackButton.gameObject.SetActive(true);
         Debug.Log("ALL BUTTONS ACTIVATED");
+    }
+
+    public bool attackSucessful(float hitChance)
+    {
+        int num = Random.Range(0, 100);
+        if(num <= hitChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+        
     }
 
 

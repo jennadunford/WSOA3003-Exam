@@ -13,6 +13,7 @@ TagManager:
   - eventText
   - healthValueText
   - energyValueText
+  - stateText
   layers:
   - Default
   - TransparentFX

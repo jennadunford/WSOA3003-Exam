@@ -10,7 +10,7 @@ public class newVariableHandler : MonoBehaviour
     public static float enemyEnergy = 200f;
     public static float enemyHealth = 400f;
 
-    public static float playerHitChance = 90f;
+    public static float playerHitChance = 85f;
     public static float enemyHitChance = 85f;
 
     public float maxValue = 400f;
@@ -27,6 +27,7 @@ public class newVariableHandler : MonoBehaviour
      public Text playerHealthText;
      public Text playerEnergyText;
 
+    private Text stateText;
     public enum turnManager { playerTurn, afterPlayerTurn, enemyTurn, afterEnemyTurn, none, empty }
     public turnManager currentTurn = turnManager.playerTurn;
 
@@ -58,12 +59,18 @@ public class newVariableHandler : MonoBehaviour
         playerHealthText = GameObject.FindGameObjectWithTag("healthValueText").GetComponent<Text>();
         playerEnergyText = GameObject.FindGameObjectWithTag("energyValueText").GetComponent<Text>();
 
+        stateText = GameObject.FindGameObjectWithTag("stateText").GetComponent<Text>();
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
        
+        if(playerHitChance > 100f)
+        {
+            playerHitChance = 100f;
+        }
 
         playerEnergyBar.fillAmount = (playerEnergy / maxValue);
         updateColour(playerEnergy / maxValue, playerEnergyBar, 1);
@@ -92,18 +99,22 @@ public class newVariableHandler : MonoBehaviour
             case (turnManager.playerTurn):
                 turnText.text = "TURN: PLAYER";
                 turnText.color = Color.white;
+                stateText.text = "Current state: Player Turn";
                 break;
             case (turnManager.enemyTurn):
                 turnText.text = "TURN: ENEMY";
                 this.GetComponent<selectButtons>().happeningText.text = "The enemy is getting ready to strike...";
                 turnText.color = Color.red;
+                stateText.text = "Current state: Enemy Turn";
                 break;
             case (turnManager.afterPlayerTurn):
                 turnText.text = "TURN: ...";
                 turnText.color = Color.red;
+                stateText.text = "Current state: After the Player's Turn";
                 break;
             case (turnManager.afterEnemyTurn):
                 turnText.text = "THE ENEMY HAS ATTACKED";
+                stateText.text = "Current state: After the enemy turn";
                 this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
                 turnText.color = Color.red;
                 break;
@@ -141,8 +152,9 @@ public class newVariableHandler : MonoBehaviour
                 break;
 
             case turnManager.empty:
-                Debug.Log("in empty turn manager state");
-                currentTurn = turnManager.playerTurn;
+                stateText.text = "Current state: Empty state";
+                StartCoroutine(wait());
+                //currentTurn = turnManager.playerTurn;
                 break;
             default:
 
@@ -203,15 +215,17 @@ public class newVariableHandler : MonoBehaviour
 
     IEnumerator afterPlayerTurn()
     {
-        Debug.Log("after player turn coroutine");
+        //Debug.Log("after player turn coroutine");
         yield return new WaitForSeconds(3f);
         if (extraTurn)
         {
             playerExtraTurn();
+           // Debug.Log("got extra turn");
         }
         else
         {
             doAfterPlayerTurn();
+           // Debug.Log("going to after player turn");
         }
         
 
@@ -219,14 +233,14 @@ public class newVariableHandler : MonoBehaviour
 
     IEnumerator enemyTurn()
     {
-        Debug.Log("enemy turn coroutine");
+        //Debug.Log("enemy turn coroutine");
         yield return new WaitForSeconds(3f);
         doEnemyTurn();
     }
 
     IEnumerator afterEnemyTurn()
     {
-        Debug.Log("after enemy turn coroutine");
+       // Debug.Log("after enemy turn coroutine");
         yield return new WaitForSeconds(3f);
         doAfterEnemyTurn();
         yield break;
@@ -234,9 +248,15 @@ public class newVariableHandler : MonoBehaviour
 
     }
 
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(4f);
+        currentTurn = turnManager.playerTurn;
+    }
+
     public void doAfterPlayerTurn()
     {
-        Debug.Log("After player turn function");
+        //Debug.Log("After player turn function");
 
             currentTurn = turnManager.enemyTurn;
         
@@ -249,14 +269,14 @@ public class newVariableHandler : MonoBehaviour
 
     public void doEnemyTurn()
     {
-        Debug.Log("Enemy turn function");
+        //Debug.Log("Enemy turn function");
         currentTurn = turnManager.afterEnemyTurn;
 
     }
     public void doAfterEnemyTurn()
     {
 
-        Debug.Log("After enemy turn function");   
+        //Debug.Log("After enemy turn function");   
         currentTurn = turnManager.empty;
        
 

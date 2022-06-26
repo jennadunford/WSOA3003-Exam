@@ -11,11 +11,13 @@ public class playerAttackFunctions : MonoBehaviour
 
     public void methylphenidateAttack(float energy)
     {
-        Debug.Log("Attacked sucessfully with methylphenidate!");
+        //Debug.Log("Attacked sucessfully with methylphenidate!");
         newVariableHandler.enemyHealth -= (methylphenidateStrength * (energy / 400) + 10);
         newVariableHandler.playerHitChance += 0.5f;
         newVariableHandler.playerEnergy += 10f;
         outputBox.text = ("Attacked with methylphenidate! Enemy health decreased! Your hit chance has increased, your energy has increased.");
+        GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
+
 
     }
 
@@ -47,6 +49,12 @@ public class playerAttackFunctions : MonoBehaviour
         newVariableHandler.playerHitChance += 0.5f;
         outputBox.text = "Used beta blockers! Your energy has increased! Enemy energy has decreased! Your hit chance has increased.";
 
+    }
+
+    public void missedAttack()
+    {
+        outputBox.text = "Oh no! Your attack missed!";
+        GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
     }
 
     public float exponentialIncrease(float value)
