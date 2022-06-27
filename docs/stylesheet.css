@@ -135,6 +135,10 @@ button {
     background-color: black;
     color: white;
   }
+
+  .medimonImageHolder {
+    margin-left: -50%;
+  }
 }
 
 #medimonImage {
