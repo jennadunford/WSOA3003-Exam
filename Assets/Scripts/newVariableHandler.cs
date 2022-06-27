@@ -15,39 +15,46 @@ public class newVariableHandler : MonoBehaviour
 
     public float maxValue = 400f;
 
-     public Text hitChanceText;
-     public Text turnText;
+    private Text hitChanceText;
+    private Text turnText;
 
-     public Image playerEnergyBar;
-     public Image playerHealthBar;
+    private Image playerEnergyBar;
+    private Image playerHealthBar;
 
-     public Image enemyHealthBar;
-     public Image enemyEnergyBar;
+    private Image enemyHealthBar;
+    private Image enemyEnergyBar;
 
-     public Text playerHealthText;
-     public Text playerEnergyText;
+    private Text playerHealthText;
+    private Text playerEnergyText;
 
     private Text stateText;
+    private Text resetSSRIText;
     public enum turnManager { playerTurn, afterPlayerTurn, enemyTurn, afterEnemyTurn, none, empty }
     public turnManager currentTurn = turnManager.playerTurn;
 
-    public float counter = 100f;
-    public float rawCounter = 0f;
-    public float newCounter = 0f;
+    public bool buttonsEnabled = true;
+
+
 
 
     public static int SSRICounter = 1;
 
-    public float timer = 0f;
 
     bool buttonsActivated = false;
 
     public static bool extraTurn = false;
 
+    public static int turns = 0;
+
+    public static int SSRIUsed = 0;
+
+    bool fadeInBool = false;
+
     // Start is called before the first frame update
     void Start()
     {
         currentTurn = turnManager.playerTurn;
+        
        
         
         hitChanceText = GameObject.FindGameObjectWithTag("hitChanceText").GetComponent<Text>();
@@ -60,12 +67,36 @@ public class newVariableHandler : MonoBehaviour
         playerEnergyText = GameObject.FindGameObjectWithTag("energyValueText").GetComponent<Text>();
 
         stateText = GameObject.FindGameObjectWithTag("stateText").GetComponent<Text>();
+        resetSSRIText = GameObject.FindGameObjectWithTag("ssriReset").GetComponent<Text>();
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        Debug.Log("Turns: " + turns);
+        Debug.Log("SSRI Used: " + SSRIUsed);
+
+
+
+        //If SSRI not used once over 4 turns get reset to zero
+        if (turns > 2)
+        {
+            if(SSRIUsed == 0)
+            {
+                SSRICounter = 1;
+                //StartCoroutine(fadeIn(1f,resetSSRIText));
+                turns = 0;
+                SSRIUsed = 0;
+                StartCoroutine(fadeOut(30f, resetSSRIText));
+            }
+            else
+            {
+                turns = 0;
+                SSRIUsed = 0;
+            }
+        }
        
         if(playerHitChance > 100f)
         {
@@ -92,6 +123,21 @@ public class newVariableHandler : MonoBehaviour
         hitChanceText.text = "Hit Chance: " + playerHitChance.ToString("F2") + "%";
         playerHealthText.text = playerHealth.ToString("F1");
         playerEnergyText.text = playerEnergy.ToString("F1");
+
+        if(currentTurn == turnManager.playerTurn)
+        {
+            if (!buttonsEnabled)
+            {
+                StartCoroutine(waitSecondsEnable(3f));
+                buttonsEnabled = true;
+
+            }
+        }
+        else
+        {
+            GetComponent<selectButtons>().disableButtons();
+            buttonsEnabled = false;
+        }
 
 
         switch (currentTurn)
@@ -281,4 +327,33 @@ public class newVariableHandler : MonoBehaviour
        
 
     }
+
+    public IEnumerator fadeIn(float timeDiv, Text text)
+    {
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+        while(text.color.a < 1.0f)
+        {
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + (Time.fixedDeltaTime / timeDiv));
+            yield return null;
+        }
+
+    }
+
+    public IEnumerator fadeOut(float timeDiv, Text text)
+    {
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 1.0f);
+        while (text.color.a > 0.0f)
+        {
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - (Time.fixedDeltaTime / timeDiv));
+            yield return null;
+        }
+
+    }
+
+    public IEnumerator waitSecondsEnable(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GetComponent<selectButtons>().enableButtons();
+    }
 }
+

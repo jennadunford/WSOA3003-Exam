@@ -14,6 +14,7 @@ TagManager:
   - healthValueText
   - energyValueText
   - stateText
+  - ssriReset
   layers:
   - Default
   - TransparentFX

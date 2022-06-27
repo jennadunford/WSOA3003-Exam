@@ -38,7 +38,9 @@ public class playerAttackFunctions : MonoBehaviour
         newVariableHandler.enemyEnergy -= 5 * newVariableHandler.SSRICounter;
 
         newVariableHandler.SSRICounter++;
+        newVariableHandler.SSRIUsed++;
         outputBox.text = "Attacked with SSRIs! Enemy's health and energy has decreased! Current SSRI strength: " + newVariableHandler.SSRICounter.ToString() + ".";
+        
 
     }
 

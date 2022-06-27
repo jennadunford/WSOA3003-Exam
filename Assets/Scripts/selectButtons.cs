@@ -204,6 +204,27 @@ public class selectButtons : MonoBehaviour
         Debug.Log("ALL BUTTONS ACTIVATED");
     }
 
+    public void enableButtons()
+    {
+        methylButton.enabled = true;
+        clobButton.enabled = true;
+        SSRIButton.enabled = true;
+        betaButton.enabled = true;
+        attackButton.enabled = true;
+        Debug.Log("ALL BUTTONS ENABLED");
+
+    }
+
+    public void disableButtons()
+    {
+        methylButton.enabled = false;
+        clobButton.enabled = false;
+        SSRIButton.enabled = false;
+        betaButton.enabled = false;
+        attackButton.enabled = false;
+        Debug.Log("ALL BUTTONS DISABLED");
+    }
+
     public bool attackSucessful(float hitChance)
     {
         int num = Random.Range(0, 100);
