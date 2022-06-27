@@ -79,6 +79,7 @@ var mResultOutcome;
 var medimonAttackStrength;
 
 var medimonImage = document.getElementById("medimonImage");
+var medimonImage2 = document.getElementById("medimonImage2");
 
 function updateMedimonSelector() {
   medimonSelected =
@@ -92,6 +93,7 @@ function updateMedimonSelector() {
       break;
     case 1:
       medimonImage.src = "medimonImages/MDragon.png";
+      medimonImage2.src = "medimonImages/MDragon.png";
       medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
@@ -115,6 +117,7 @@ function updateMedimonSelector() {
       break;
     case 2:
       medimonImage.src = "medimonImages/Clob-.png";
+      medimonImage2.src = "medimonImages/Clob-.png";
       medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
@@ -137,6 +140,7 @@ function updateMedimonSelector() {
       break;
     case 3:
       medimonImage.src = "medimonImages/Sera.png";
+      medimonImage2.src = "medimonImages/Sera.png";
       medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
@@ -159,6 +163,7 @@ function updateMedimonSelector() {
       break;
     case 4:
       medimonImage.src = "medimonImages/Shield.png";
+      medimonImage2.src = "medimonImages/Shield.png";
       medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
@@ -181,6 +186,7 @@ function updateMedimonSelector() {
       break;
     case 5:
       medimonImage.src = "medimonImages/Fairy.png";
+      medimonImage2.src = "medimonImages/Fairy.png";
       medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
@@ -297,7 +303,7 @@ function getBrainMonsterAttack(attackList) {
 
 function attack() {
   //Check that no values are zero
-
+  medimonImage2.classList.remove("hidden");
   if (
     (selectedBrainMonsterAttack == "0") |
     (selectedMedimonAttack == "0") |
