@@ -11,7 +11,7 @@ public class newVariableHandler : MonoBehaviour
     public static float enemyHealth = 400f;
 
     public static float playerHitChance = 85f;
-    public static float enemyHitChance = 85f;
+    public static float enemyHitChance = 90f;
 
     public static float maxValue = 400f;
 
@@ -189,6 +189,7 @@ public class newVariableHandler : MonoBehaviour
 
                    break;
                case turnManager.afterEnemyTurn:
+                enemyAttackFunctions.enemyAttacked = false;
                 Debug.Log("after enemy turn manager state");
                 StartCoroutine(afterEnemyTurn());
                    break;
