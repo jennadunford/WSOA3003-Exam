@@ -218,7 +218,7 @@ public class selectButtons : MonoBehaviour
         SSRIButton.gameObject.SetActive(false);
         betaButton.gameObject.SetActive(false);
         attackButton.gameObject.SetActive(false);
-        Debug.Log("ALL BUTTONS DEACTIVATED");
+       // Debug.Log("ALL BUTTONS DEACTIVATED");
     }
 
     public void activateButtons()
@@ -228,7 +228,7 @@ public class selectButtons : MonoBehaviour
         SSRIButton.gameObject.SetActive(true);
         betaButton.gameObject.SetActive(true);
         attackButton.gameObject.SetActive(true);
-        Debug.Log("ALL BUTTONS ACTIVATED");
+       // Debug.Log("ALL BUTTONS ACTIVATED");
     }
 
     public void enableButtons()
@@ -238,7 +238,7 @@ public class selectButtons : MonoBehaviour
         SSRIButton.enabled = true;
         betaButton.enabled = true;
         attackButton.enabled = true;
-        Debug.Log("ALL BUTTONS ENABLED");
+       // Debug.Log("ALL BUTTONS ENABLED");
 
     }
 
@@ -249,7 +249,7 @@ public class selectButtons : MonoBehaviour
         SSRIButton.enabled = false;
         betaButton.enabled = false;
         attackButton.enabled = false;
-        Debug.Log("ALL BUTTONS DISABLED");
+       // Debug.Log("ALL BUTTONS DISABLED");
     }
 
     public bool attackSucessful(float hitChance)

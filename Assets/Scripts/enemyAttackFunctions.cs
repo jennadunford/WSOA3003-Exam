@@ -7,6 +7,7 @@ public class enemyAttackFunctions : MonoBehaviour
 {
     public static string attackString = "";
     public static bool enemyAttacked = false;
+    private float enemyBaseAttack = 5f;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -15,6 +16,7 @@ public class enemyAttackFunctions : MonoBehaviour
         if(!enemyAttacked && GetComponent<newVariableHandler>().currentTurn == newVariableHandler.turnManager.enemyTurn)
         {
             int num = Random.Range(0, 100);
+            Debug.Log("Random number generated for enemy attack chance: " + num);
             if(num <= newVariableHandler.enemyHitChance)
             {
                 enemyAttacked = true;
@@ -60,11 +62,12 @@ public class enemyAttackFunctions : MonoBehaviour
 
     public void enemyHealthLowAttacks()
     {
-        int num = 0;
+        int num = Random.Range(1,3);
+        Debug.Log("Random num between 1 and 3: " + num);
         switch (num)
         {
             case 1:
-                increaseOwnHealthLow(newVariableHandler.enemyEnergy);
+                increaseOwnHealthLow();
                 break;
             case 2:
                 attackPlayerHealthAndEnergy(newVariableHandler.enemyEnergy);
@@ -78,14 +81,15 @@ public class enemyAttackFunctions : MonoBehaviour
 
     public void enemyHealthVeryLowAttacks()
     {
-        int num = 0;
+        int num = Random.Range(1,5);
+        Debug.Log("Random num between 1 and 5: " + num);
         switch (num)
         {
             case 1:
-                increaseOwnHealthHigh(newVariableHandler.enemyEnergy);
+                increaseOwnHealthHigh();
                 break;
             case 2:
-                increaseOwnHealthLow(newVariableHandler.enemyEnergy);
+                increaseOwnHealthLow();
                 break;
             case 3:
                 attackPlayerEnergy(newVariableHandler.enemyEnergy);
@@ -108,6 +112,7 @@ public class enemyAttackFunctions : MonoBehaviour
     public void enemyEnergyLowAttacks()
     {
         int num = Random.Range(1,2);
+        Debug.Log("Random num between 1 and 2: " + num);
         switch (num)
         {
             case 1:
@@ -123,6 +128,7 @@ public class enemyAttackFunctions : MonoBehaviour
     public void enemyEnergyVeryLowAttacks()
     {
         int num = Random.Range(1,3);
+        Debug.Log("Random num between 1 and 3: " + num);
         switch (num)
         {
             case 1:
@@ -142,6 +148,7 @@ public class enemyAttackFunctions : MonoBehaviour
     {
         
         int num = Random.Range(1, 4);
+        Debug.Log("Random num between 1 and 4: " + num);
         switch (num)
         {
             case 1:
@@ -184,61 +191,95 @@ public class enemyAttackFunctions : MonoBehaviour
 
     public void attackPlayerHealth(float enemyEnergy)
     {
+        Debug.Log("Attacked player health");
+        newVariableHandler.playerHealth -= enemyBaseAttack + (((enemyEnergy / newVariableHandler.maxValue) * 100)/2);
         attackString = "The enemy has damaged your health!";
 
     }
 
     public void attackPlayerEnergy(float enemyEnergy)
     {
+        Debug.Log("Attacked player energy");
+        newVariableHandler.playerEnergy -= enemyBaseAttack + (((enemyEnergy / newVariableHandler.maxValue) * 100)/2);
         attackString = "The enemy has damaged your energy";
     }
 
     public void attackPlayerHealthAndEnergy(float enemyEnergy)
     {
+        Debug.Log("Attacked player health and energy");
+        newVariableHandler.playerEnergy -= enemyBaseAttack + (((enemyEnergy / newVariableHandler.maxValue) * 100)/2);
+        newVariableHandler.playerHealth -= enemyBaseAttack + (((enemyEnergy / newVariableHandler.maxValue) * 100)/2);
         attackString = "The enemy has damaged your health and energy!";
     }
 
     public void increaseOwnEnergyLow(float enemyEnergy)
     {
+        Debug.Log("Increased own energy low");
+        newVariableHandler.enemyEnergy += enemyEnergy * 1.5f;
         attackString = "The enemy has drawn enough power to increase its own energy by a small amount.";
     }
 
     public void increaseOwnEnergyHigh(float enemyEnergy)
     {
-        attackString = "The enemy has damaged your health! has summoned all of its strength to increase its own energy substantially!";
+        Debug.Log("Increased own energy high");
+        newVariableHandler.enemyEnergy += exponentialIncrease(enemyEnergy);
+        attackString = "The enemy has summoned all of its strength to increase its own energy substantially!";
     }
-    public void increaseOwnHealthHigh(float enemyEnergy)
+    public void increaseOwnHealthHigh()
     {
+        Debug.Log("increased own health high");
+        newVariableHandler.enemyHealth += exponentialIncrease(newVariableHandler.enemyHealth);
+
         attackString = "The enemy has summoned all its power to increase its health by a large amount!";
     }
 
-    public void increaseOwnHealthLow(float enemyEnergy)
+    public void increaseOwnHealthLow()
     {
+        Debug.Log("Increased own health low");
+        newVariableHandler.enemyHealth += newVariableHandler.enemyHealth * 1.5f;
+
         attackString = "The enemy has drawn enough power to increase its own health by a small amount.";
     }
 
     public void disablePlayerAttack(Button attackButton)
     {
-        attackString = "The enemy has become resistant to one of your attacks for a turn!";
+        Debug.Log("disabling a player's attack");
+        attackString = "The enemy has become resistant to your " + attackButton.GetComponentInChildren<Text>().text + " attack!";
     }
 
     public void rageHealthAndChance(float enemyEnergy)
     {
-        attackString = "The energy cries out with rage! The enemy substantially damages your health and hit chance.";
+        Debug.Log("Rage - damage player health and hit chance");
+        newVariableHandler.playerHealth -= (enemyBaseAttack + ((enemyEnergy / newVariableHandler.maxValue) * 100)/2)+10f;
+        newVariableHandler.playerHitChance -= 2.5f;
+        attackString = "The energy cries out with rage! The enemy  damages your health and hit chance.";
     }
 
     public void increaseHitChanceAndEnergy(float enemyEnergy)
     {
+        Debug.Log("increase own hit chance and energy");
+        newVariableHandler.enemyEnergy += enemyEnergy * 1.5f;
+        newVariableHandler.enemyHitChance += 0.5f;
         attackString = "The enemy has increased its hit chance along with its energy!";
     }
 
     public void restoreFullHealthDecreaseEnergy()
     {
+        Debug.Log("Restored full health");
+        newVariableHandler.enemyHealth = newVariableHandler.maxValue;
         attackString = "You are filled with despair! The enemy has somehow managed to restore its health entirely!";
     }
 
     public void missedAttack()
     {
+        Debug.Log("Enemy missed attack");
         attackString = "The enemy's attack missed!";
+    }
+
+    public float exponentialIncrease(float value)
+    {
+        float result;
+        result = (Mathf.Clamp((Mathf.Exp(-0.012f * value) * 121.422f), 1f, 120f));
+        return result;
     }
 }

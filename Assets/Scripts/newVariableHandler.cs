@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class newVariableHandler : MonoBehaviour
 {
-    public static float playerEnergy = 200f;
+    public static float playerEnergy = 300f;
     public static float playerHealth = 400f;
-    public static float enemyEnergy = 200f;
+    public static float enemyEnergy = 300f;
     public static float enemyHealth = 400f;
 
     public static float playerHitChance = 85f;
-    public static float enemyHitChance = 90f;
+    public static float enemyHitChance = 95f;
 
     public static float maxValue = 400f;
 
@@ -84,8 +85,8 @@ public class newVariableHandler : MonoBehaviour
     void FixedUpdate()
     {
 
-        Debug.Log("Turns: " + turns);
-        Debug.Log("SSRI Used: " + SSRIUsed);
+       // Debug.Log("Turns: " + turns);
+       // Debug.Log("SSRI Used: " + SSRIUsed);
 
 
 
@@ -133,6 +134,8 @@ public class newVariableHandler : MonoBehaviour
         playerHealthText.text = playerHealth.ToString("F1");
         playerEnergyText.text = playerEnergy.ToString("F1");
 
+        if(playerHealth ||)
+
         if(currentTurn == turnManager.playerTurn)
         {
             if (!buttonsEnabled)
@@ -178,24 +181,25 @@ public class newVariableHandler : MonoBehaviour
            switch (currentTurn)
            {
                case turnManager.afterPlayerTurn:
-                Debug.Log("after player turn manager state");
+                //Debug.Log("after player turn manager state");
                 buttonsActivated = false;
                 StartCoroutine(afterPlayerTurn());
 
                    break;
                case turnManager.enemyTurn:
-                Debug.Log("enemy turn manager state");
+                //Debug.Log("enemy turn manager state");
                 StartCoroutine(enemyTurn());
 
                    break;
                case turnManager.afterEnemyTurn:
-                enemyAttackFunctions.enemyAttacked = false;
-                Debug.Log("after enemy turn manager state");
+                
+               // Debug.Log("after enemy turn manager state");
                 StartCoroutine(afterEnemyTurn());
                    break;
 
                case turnManager.playerTurn:
-                   Debug.Log("player turn manager state");
+                enemyAttackFunctions.enemyAttacked = false;
+               // Debug.Log("player turn manager state");
                 
 
                 if (!buttonsActivated)
@@ -380,6 +384,13 @@ public class newVariableHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         GetComponent<selectButtons>().enableButtons();
+    }
+
+    public IEnumerator endGame(string scene)
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(scene);
+
     }
 }
 

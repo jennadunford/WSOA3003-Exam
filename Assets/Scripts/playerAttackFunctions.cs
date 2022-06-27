@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class playerAttackFunctions : MonoBehaviour
 {
     public Text outputBox;
-    int methylphenidateStrength = 5;
+    int methylphenidateStrength = 8;
+    int clobazamStrength = 8;
+    int betaBlockStrength = 5;
 
 
     public void methylphenidateAttack(float energy)
     {
-        //Debug.Log("Attacked sucessfully with methylphenidate!");
         newVariableHandler.enemyHealth -= (methylphenidateStrength * (energy / 400) + 10);
         newVariableHandler.playerHitChance += 0.5f;
         newVariableHandler.playerEnergy += 10f;
@@ -25,8 +26,8 @@ public class playerAttackFunctions : MonoBehaviour
     public void clobazamAttack(float health)
     {
         newVariableHandler.playerHealth += exponentialIncrease(health);
-        newVariableHandler.enemyEnergy -= 10f;
-        newVariableHandler.playerHitChance -= 0.5f;
+        newVariableHandler.enemyEnergy -= clobazamStrength + (((newVariableHandler.playerEnergy/newVariableHandler.maxValue)*100)/3);
+        newVariableHandler.playerHitChance -= 1f;
         newVariableHandler.extraTurn = true;
         outputBox.text = "Used clobazam! Your health has increased! Enemy energy has decreased! Your hit chance has decreased. You've been given an extra turn! You will not be able to use clobazam for one turn.";
         this.GetComponent<selectButtons>().clobButton.enabled = false;
@@ -37,6 +38,7 @@ public class playerAttackFunctions : MonoBehaviour
     public void SSRIAttack(float energy)
     {
         newVariableHandler.enemyHealth -= 5 * newVariableHandler.SSRICounter;
+        newVariableHandler.enemyHealth -= Mathf.Pow(2, newVariableHandler.SSRICounter);
         newVariableHandler.enemyEnergy -= 3 * newVariableHandler.SSRICounter;
 
         newVariableHandler.SSRICounter++;
@@ -50,7 +52,7 @@ public class playerAttackFunctions : MonoBehaviour
     public void betaBlockAttack(float energy)
     {
         newVariableHandler.playerEnergy += exponentialIncrease(energy);
-        newVariableHandler.enemyEnergy -= 5 * energy / 400f;
+        newVariableHandler.enemyEnergy -= betaBlockStrength + (((energy / newVariableHandler.maxValue)*100)/3);
         newVariableHandler.playerHitChance += 0.5f;
         newVariableHandler.betaUsage++;
         outputBox.text = "Used beta blockers! Your energy has increased! Enemy energy has decreased! Your hit chance has increased.";
@@ -66,7 +68,7 @@ public class playerAttackFunctions : MonoBehaviour
     public float exponentialIncrease(float value)
     {
         float result;
-        result = Mathf.Clamp((Mathf.Exp((-0.012f * value) * 121.422f)), 1f, 120f);
+        result = (Mathf.Clamp((Mathf.Exp(-0.012f * value) * 121.422f), 1f, 120f));
         return result;
     }
 
