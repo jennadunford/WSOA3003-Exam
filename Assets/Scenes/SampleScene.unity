@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 17436167}
   m_Layer: 5
   m_Name: SSRIButton
-  m_TagString: Untagged
+  m_TagString: sButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,7 +310,7 @@ RectTransform:
   m_Children:
   - {fileID: 2134881944}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -454,7 +454,7 @@ RectTransform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 11
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -533,7 +533,7 @@ RectTransform:
   m_LocalScale: {x: 0.11, y: 0.11, z: 1}
   m_Children: []
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 15
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -574,7 +574,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: SELECTIVE SERATONIN REUPTAKE INHIBITOR EFFECTIVENESS HAS BEEN RESET DUE
-    TO LACK OF CONSISTENT USE OVER 4 TURNS...
+    TO NOT USING OVER 4 TURNS
 --- !u!222 &116240987
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -715,9 +715,11 @@ MonoBehaviour:
   attackButton: {fileID: 1814991097}
   InfoPanel: {fileID: 710730830}
   happeningText: {fileID: 223632306}
-  weaponName: {fileID: 1419940096}
+  weaponName: {fileID: 1622983846}
   weaponDescript: {fileID: 131674981}
   weaponStats: {fileID: 1507542224}
+  selectedAttackText: {fileID: 0}
+  numberOfTimesUsedText: {fileID: 1419940096}
 --- !u!114 &126537464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,19 +733,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxValue: 400
-  hitChanceText: {fileID: 1511767362}
-  turnText: {fileID: 669674082}
-  playerEnergyBar: {fileID: 1495973886}
-  playerHealthBar: {fileID: 527635364}
-  enemyHealthBar: {fileID: 1544286130}
-  enemyEnergyBar: {fileID: 1905826047}
-  playerHealthText: {fileID: 1381489211}
-  playerEnergyText: {fileID: 15843304}
   currentTurn: 0
-  counter: 3
-  rawCounter: 0
-  newCounter: 0
-  timer: 0
+  buttonsEnabled: 1
 --- !u!114 &126537465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,15 +935,15 @@ RectTransform:
   m_GameObject: {fileID: 131674978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 710730831}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -535, y: -93}
-  m_SizeDelta: {x: 2524.11, y: 2592.91}
+  m_AnchoredPosition: {x: -574, y: -134}
+  m_SizeDelta: {x: 3411.71, y: 3539.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &131674980
 CanvasRenderer:
@@ -995,7 +986,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'DESCRIPTION:'
+  m_Text: "Abilities: \nA powerful stimulant weapon that delivers damage to the enemy's
+    health. \nThe strength of methylphenidate is dependent on your energy level.
+    \nThe higher your energy level, the stronger the attack.\""
 --- !u!1 &223632304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,7 +1098,7 @@ RectTransform:
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1487,11 +1480,11 @@ RectTransform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -720, y: 166.44}
+  m_AnchoredPosition: {x: -746, y: 245.47}
   m_SizeDelta: {x: 1528.5, y: 332.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &669674082
@@ -1569,8 +1562,9 @@ RectTransform:
   - {fileID: 1419940094}
   - {fileID: 131674979}
   - {fileID: 1507542226}
+  - {fileID: 1622983845}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1801,11 +1795,11 @@ RectTransform:
   m_GameObject: {fileID: 945527262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.59, y: 0.59, z: 1}
   m_Children:
   - {fileID: 1886041142}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 13
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1919,7 +1913,7 @@ RectTransform:
   m_Children:
   - {fileID: 2111623330}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1963,6 +1957,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954335004}
+  m_CullTransparentMesh: 1
+--- !u!1 &968703119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 968703120}
+  - component: {fileID: 968703122}
+  - component: {fileID: 968703121}
+  m_Layer: 5
+  m_Name: selectedAttackText
+  m_TagString: selectedAttackText
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &968703120
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968703119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1990261465}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -629.06, y: 163.35}
+  m_SizeDelta: {x: 4044.1, y: 339.07}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &968703121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968703119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8d1be8b84467ce941aa74de05f757080, type: 3}
+    m_FontSize: 300
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 'Selected Attack:'
+--- !u!222 &968703122
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968703119}
   m_CullTransparentMesh: 1
 --- !u!1 &1021335449
 GameObject:
@@ -2161,7 +2234,7 @@ RectTransform:
   - {fileID: 1814825531}
   - {fileID: 1024861013}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2324,7 +2397,7 @@ GameObject:
   - component: {fileID: 1249572577}
   m_Layer: 5
   m_Name: betaBlockButton
-  m_TagString: Untagged
+  m_TagString: bButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2342,7 +2415,7 @@ RectTransform:
   m_Children:
   - {fileID: 123961204}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2675,8 +2748,8 @@ GameObject:
   - component: {fileID: 1419940095}
   - component: {fileID: 1419940096}
   m_Layer: 5
-  m_Name: weaponName
-  m_TagString: Untagged
+  m_Name: numberofTimesUsed
+  m_TagString: timesUsed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2690,15 +2763,15 @@ RectTransform:
   m_GameObject: {fileID: 1419940093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 710730831}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450.24, y: 446}
-  m_SizeDelta: {x: 2179.34, y: 332.88}
+  m_AnchoredPosition: {x: 169, y: -440}
+  m_SizeDelta: {x: 3896, y: 361.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1419940095
 CanvasRenderer:
@@ -2721,7 +2794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2738,10 +2811,10 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'WEAPON:'
+  m_Text: 'Number of times used: 0'
 --- !u!1 &1420428632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,7 +2926,7 @@ RectTransform:
   - {fileID: 2096163116}
   - {fileID: 223632305}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3024,7 +3097,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'STATISTICS:'
+  m_Text: "Effects: \nUsing this weapon will increase your energy level and your
+    hit chance percentage. \n\nOnce used more than three times, there is a chance
+    for the enemy to become resistant to this attack for a turn, use it wisely."
 --- !u!222 &1507542225
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3042,15 +3117,15 @@ RectTransform:
   m_GameObject: {fileID: 1507542223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 710730831}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 466, y: 86.05}
-  m_SizeDelta: {x: 2524.11, y: 2672.56}
+  m_AnchoredPosition: {x: 509, y: 148}
+  m_SizeDelta: {x: 3734.47, y: 3222.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1511767360
 GameObject:
@@ -3236,7 +3311,7 @@ RectTransform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3413,6 +3488,88 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1622983844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1622983845}
+  - component: {fileID: 1622983847}
+  - component: {fileID: 1622983846}
+  m_Layer: 5
+  m_Name: weaponName
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1622983845
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622983844}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_Children: []
+  m_Father: {fileID: 710730831}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -570.71, y: 318.6}
+  m_SizeDelta: {x: 2778.35, y: 692.33}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1622983846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622983844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8d1be8b84467ce941aa74de05f757080, type: 3}
+    m_FontSize: 300
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 'Current Weapon: Methylphenidate
+
+
+'
+--- !u!222 &1622983847
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622983844}
+  m_CullTransparentMesh: 1
 --- !u!1 &1675539578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,7 +3916,7 @@ GameObject:
   - component: {fileID: 1693210878}
   m_Layer: 5
   m_Name: methyButton
-  m_TagString: Untagged
+  m_TagString: mButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3777,7 +3934,7 @@ RectTransform:
   m_Children:
   - {fileID: 884554747}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4063,7 +4220,7 @@ GameObject:
   - component: {fileID: 1814991100}
   m_Layer: 5
   m_Name: attackButton
-  m_TagString: Untagged
+  m_TagString: aButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4081,7 +4238,7 @@ RectTransform:
   m_Children:
   - {fileID: 728468299}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4542,7 +4699,7 @@ RectTransform:
   - {fileID: 15843303}
   - {fileID: 378556457}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4678,7 +4835,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 312761395}
+  - {fileID: 968703120}
   - {fileID: 669674081}
+  - {fileID: 116240985}
   - {fileID: 1458828882}
   - {fileID: 954335005}
   - {fileID: 1123703051}
@@ -4692,8 +4852,6 @@ RectTransform:
   - {fileID: 35974696}
   - {fileID: 710730831}
   - {fileID: 945527263}
-  - {fileID: 312761395}
-  - {fileID: 116240985}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4717,7 +4875,7 @@ GameObject:
   - component: {fileID: 2015486958}
   m_Layer: 5
   m_Name: clobButton
-  m_TagString: Untagged
+  m_TagString: cButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4735,7 +4893,7 @@ RectTransform:
   m_Children:
   - {fileID: 1021335450}
   m_Father: {fileID: 1990261465}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

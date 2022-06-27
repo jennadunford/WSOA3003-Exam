@@ -15,6 +15,13 @@ TagManager:
   - energyValueText
   - stateText
   - ssriReset
+  - mButton
+  - cButton
+  - sButton
+  - bButton
+  - aButton
+  - selectedAttackText
+  - timesUsed
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ public class newVariableHandler : MonoBehaviour
     public static float playerHitChance = 85f;
     public static float enemyHitChance = 85f;
 
-    public float maxValue = 400f;
+    public static float maxValue = 400f;
 
     private Text hitChanceText;
     private Text turnText;
@@ -50,6 +50,15 @@ public class newVariableHandler : MonoBehaviour
 
     bool fadeInBool = false;
 
+    public static int methylUsage = 0;
+    public static int clobUsage = 0;
+    public static int ssriUsage = 0;
+    public static int betaUsage = 0;
+
+    public static bool methylResistant = false;
+    public static bool clobResistant = false;
+    public static bool betaResistant = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,7 +90,7 @@ public class newVariableHandler : MonoBehaviour
 
 
         //If SSRI not used once over 4 turns get reset to zero
-        if (turns > 2)
+        if (turns > 4)
         {
             if(SSRIUsed == 0)
             {
@@ -161,7 +170,7 @@ public class newVariableHandler : MonoBehaviour
             case (turnManager.afterEnemyTurn):
                 turnText.text = "THE ENEMY HAS ATTACKED";
                 stateText.text = "Current state: After the enemy turn";
-                this.GetComponent<selectButtons>().happeningText.text = "The enemy attacks!";
+                this.GetComponent<selectButtons>().happeningText.text = enemyAttackFunctions.attackString;
                 turnText.color = Color.red;
                 break;
         }
@@ -194,6 +203,21 @@ public class newVariableHandler : MonoBehaviour
 
                     this.GetComponent<selectButtons>().happeningText.text = "It's your turn! Select an attack!";
                     buttonsActivated = true;
+                    if (methylResistant)
+                    {
+                        GetComponent<selectButtons>().methylButton.gameObject.SetActive(false);
+                        methylResistant = false;
+                    }
+                    if (clobResistant)
+                    {
+                        GetComponent<selectButtons>().clobButton.gameObject.SetActive(false);
+                        clobResistant = false;
+                    }
+                    if (betaResistant)
+                    {
+                        GetComponent<selectButtons>().betaButton.gameObject.SetActive(false);
+                        betaResistant = false;
+                    }
                 }
                 break;
 
@@ -342,6 +366,7 @@ public class newVariableHandler : MonoBehaviour
     public IEnumerator fadeOut(float timeDiv, Text text)
     {
         text.color = new Color(text.color.r, text.color.g, text.color.b, 1.0f);
+        yield return new WaitForSeconds(3f);
         while (text.color.a > 0.0f)
         {
             text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - (Time.fixedDeltaTime / timeDiv));
