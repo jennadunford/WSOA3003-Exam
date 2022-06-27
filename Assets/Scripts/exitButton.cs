@@ -9,4 +9,10 @@ public class exitButton : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void loadGame()
+    {
+        SceneManager.LoadScene("gameScene");
+        Debug.Log("Load the game");
+    }
 }

@@ -134,9 +134,28 @@ public class newVariableHandler : MonoBehaviour
         playerHealthText.text = playerHealth.ToString("F1");
         playerEnergyText.text = playerEnergy.ToString("F1");
 
-     //   if(playerHealth == 0)
+       if(playerHealth <= 0)
+        {
+            Debug.Log("Player has lost all health");
+            currentTurn = turnManager.none;
+            //StopAllCoroutines();
+            GetComponent<selectButtons>().deactivateButtons();
+            StartCoroutine(endGame("Player Lose Scene"));
 
-        if(currentTurn == turnManager.playerTurn)
+
+        }
+        if (enemyHealth <= 0)
+        {
+            Debug.Log("Enemy has lost all health");
+            currentTurn = turnManager.none;
+            //StopAllCoroutines();
+            GetComponent<selectButtons>().deactivateButtons();
+            StartCoroutine(endGame("Player Win Scene"));
+
+
+        }
+
+        if (currentTurn == turnManager.playerTurn)
         {
             if (!buttonsEnabled)
             {
