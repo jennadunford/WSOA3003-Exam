@@ -136,3 +136,9 @@ button {
     color: white;
   }
 }
+
+#medimonImage {
+  width: 250px;
+  height: auto;
+  margin-left: 30%;
+}

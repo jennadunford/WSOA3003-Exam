@@ -78,6 +78,8 @@ var mResultOutcome;
 
 var medimonAttackStrength;
 
+var medimonImage = document.getElementById("medimonImage");
+
 function updateMedimonSelector() {
   medimonSelected =
     medimonSelector.options[medimonSelector.selectedIndex].value;
@@ -85,8 +87,12 @@ function updateMedimonSelector() {
 
   switch (parseInt(medimonSelected)) {
     case 0:
+      medimonImage.src = "";
+      medimonImage.classList.add("hidden");
       break;
     case 1:
+      medimonImage.src = "medimonImages/MDragon.png";
+      medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
         .classList.remove("hidden");
@@ -108,6 +114,8 @@ function updateMedimonSelector() {
 
       break;
     case 2:
+      medimonImage.src = "medimonImages/Clob-.png";
+      medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
         .classList.add("hidden");
@@ -128,6 +136,8 @@ function updateMedimonSelector() {
       document.getElementById("careFairy").classList.remove("visible");
       break;
     case 3:
+      medimonImage.src = "medimonImages/Sera.png";
+      medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
         .classList.add("hidden");
@@ -148,6 +158,8 @@ function updateMedimonSelector() {
       document.getElementById("careFairy").classList.remove("visible");
       break;
     case 4:
+      medimonImage.src = "medimonImages/Shield.png";
+      medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
         .classList.add("hidden");
@@ -168,6 +180,8 @@ function updateMedimonSelector() {
       document.getElementById("careFairy").classList.remove("visible");
       break;
     case 5:
+      medimonImage.src = "medimonImages/Fairy.png";
+      medimonImage.classList.remove("hidden");
       document
         .getElementById("methylpheniDragonAttacks")
         .classList.add("hidden");
