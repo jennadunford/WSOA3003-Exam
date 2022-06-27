@@ -134,7 +134,7 @@ public class newVariableHandler : MonoBehaviour
         playerHealthText.text = playerHealth.ToString("F1");
         playerEnergyText.text = playerEnergy.ToString("F1");
 
-        if(playerHealth ||)
+     //   if(playerHealth == 0)
 
         if(currentTurn == turnManager.playerTurn)
         {
