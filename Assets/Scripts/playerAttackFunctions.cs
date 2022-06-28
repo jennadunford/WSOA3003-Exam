@@ -13,7 +13,7 @@ public class playerAttackFunctions : MonoBehaviour
 
     public void methylphenidateAttack(float energy)
     {
-        newVariableHandler.enemyHealth -= (methylphenidateStrength * (energy / 400) + 10);
+        newVariableHandler.enemyHealth -= (methylphenidateStrength * (energy / newVariableHandler.maxValue) + 10);
         newVariableHandler.playerHitChance += 0.5f;
         newVariableHandler.playerEnergy += 10f;
         newVariableHandler.methylUsage++;
@@ -37,7 +37,6 @@ public class playerAttackFunctions : MonoBehaviour
 
     public void SSRIAttack(float energy)
     {
-        newVariableHandler.enemyHealth -= 5 * newVariableHandler.SSRICounter;
         newVariableHandler.enemyHealth -= Mathf.Pow(2, newVariableHandler.SSRICounter);
         newVariableHandler.enemyEnergy -= 3 * newVariableHandler.SSRICounter;
 
