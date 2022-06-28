@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,8 +13,8 @@ public class enemyAttackFunctions : MonoBehaviour
     {
         if(!enemyAttacked && GetComponent<newVariableHandler>().currentTurn == newVariableHandler.turnManager.enemyTurn)
         {
-            int num = Random.Range(0, 100);
-            Debug.Log("Random number generated for enemy attack chance: " + num);
+            int num = Random.Range(0, 101);
+            //Debug.Log("Random number generated for enemy attack chance: " + num);
             if(num <= newVariableHandler.enemyHitChance)
             {
                 enemyAttacked = true;
@@ -33,20 +31,20 @@ public class enemyAttackFunctions : MonoBehaviour
 
     public void enemyAttack()
     {
-        if(newVariableHandler.enemyHealth < (2 / 10) * newVariableHandler.maxValue)
+        if(newVariableHandler.enemyHealth <  newVariableHandler.maxValue/4)
         {
             enemyHealthVeryLowAttacks();
             //do things for if health very low
         }
-        else if(newVariableHandler.enemyEnergy < (2/10) * newVariableHandler.maxValue)
+        else if(newVariableHandler.enemyEnergy < newVariableHandler.maxValue/4)
         {
             enemyEnergyVeryLowAttacks();
             //do things for if energy very low
-        }else if(newVariableHandler.enemyHealth < (4 / 10) * newVariableHandler.maxValue)
+        }else if(newVariableHandler.enemyHealth < newVariableHandler.maxValue/2)
         {
             enemyHealthLowAttacks();
             //do things for if health kinda low
-        }else if(newVariableHandler.enemyEnergy < (4/10)* newVariableHandler.maxValue)
+        }else if(newVariableHandler.enemyEnergy < newVariableHandler.maxValue/2)
         {
             enemyEnergyLowAttacks();
 
@@ -62,8 +60,8 @@ public class enemyAttackFunctions : MonoBehaviour
 
     public void enemyHealthLowAttacks()
     {
-        int num = Random.Range(1,3);
-        Debug.Log("Random num between 1 and 3: " + num);
+        int num = Random.Range(1,4);
+       // Debug.Log("Random num between 1 and 3: " + num);
         switch (num)
         {
             case 1:
@@ -75,14 +73,17 @@ public class enemyAttackFunctions : MonoBehaviour
             case 3:
                 attackPlayerHealth(newVariableHandler.enemyEnergy);
                 break;
+            default:
+                enemyHealthLowAttacks();
+                break;
         }
 
     }
 
     public void enemyHealthVeryLowAttacks()
     {
-        int num = Random.Range(1,5);
-        Debug.Log("Random num between 1 and 5: " + num);
+        int num = Random.Range(1,6);
+        //Debug.Log("Random num between 1 and 5: " + num);
         switch (num)
         {
             case 1:
@@ -105,14 +106,18 @@ public class enemyAttackFunctions : MonoBehaviour
             case 5:
                 rageHealthAndChance(newVariableHandler.enemyEnergy);
                 break;
+            default:
+                enemyHealthVeryLowAttacks();
+                break;
+
         }
 
     }
 
     public void enemyEnergyLowAttacks()
     {
-        int num = Random.Range(1,2);
-        Debug.Log("Random num between 1 and 2: " + num);
+        int num = Random.Range(1,3);
+        //Debug.Log("Random num between 1 and 2: " + num);
         switch (num)
         {
             case 1:
@@ -121,14 +126,17 @@ public class enemyAttackFunctions : MonoBehaviour
             case 2:
                 increaseHitChanceAndEnergy(newVariableHandler.enemyEnergy);
                 break;
+            default:
+                enemyEnergyLowAttacks();
+                break;
         }
 
     }
 
     public void enemyEnergyVeryLowAttacks()
     {
-        int num = Random.Range(1,3);
-        Debug.Log("Random num between 1 and 3: " + num);
+        int num = Random.Range(1,4);
+       // Debug.Log("Random num between 1 and 3: " + num);
         switch (num)
         {
             case 1:
@@ -140,6 +148,9 @@ public class enemyAttackFunctions : MonoBehaviour
             case 3:
                 attackPlayerHealthAndEnergy(newVariableHandler.enemyEnergy);
                 break;
+            default:
+                enemyEnergyVeryLowAttacks();
+                break;
         }
 
     }
@@ -147,8 +158,8 @@ public class enemyAttackFunctions : MonoBehaviour
     public void regularAttacks()
     {
         
-        int num = Random.Range(1, 4);
-        Debug.Log("Random num between 1 and 4: " + num);
+        int num = Random.Range(1, 5);
+        //Debug.Log("Random num between 1 and 4: " + num);
         switch (num)
         {
             case 1:
@@ -161,26 +172,50 @@ public class enemyAttackFunctions : MonoBehaviour
                 attackPlayerHealthAndEnergy(newVariableHandler.enemyEnergy);
                 break;
             case 4:
-                if (newVariableHandler.methylUsage >= 3)
+               int num2 = Random.Range(1, 4);
+                switch (num2)
                 {
-                    newVariableHandler.methylResistant = true;
-                    disablePlayerAttack(GetComponent<selectButtons>().methylButton);
-                }
-                else if (newVariableHandler.clobUsage >= 3)
-                {
-                    newVariableHandler.clobResistant = true;
-                    disablePlayerAttack(GetComponent<selectButtons>().clobButton);
-                }
-                else if (newVariableHandler.betaUsage >= 3)
-                {
-                    newVariableHandler.betaResistant = true;
-                    disablePlayerAttack(GetComponent<selectButtons>().betaButton);
-                }
-                else
-                {
-                    regularAttacks();
-                }
+                    case 1:
+                        if (newVariableHandler.methylUsage >= 3)
+                        {
+                            newVariableHandler.methylResistant = true;
+                            disablePlayerAttack(GetComponent<selectButtons>().methylButton);
+                        }
+                        else
+                        {
+                            regularAttacks();
+                        }
 
+                        break;
+                    case 2:
+                        if (newVariableHandler.betaUsage >= 3)
+                        {
+                            newVariableHandler.betaResistant = true;
+                            disablePlayerAttack(GetComponent<selectButtons>().betaButton);
+                        }
+                        else
+                        {
+                            regularAttacks();
+                        }
+
+
+                        break;
+                    case 3:
+                        if(newVariableHandler.clobUsage >= 3)
+                        {
+                            newVariableHandler.clobResistant = true;
+                            disablePlayerAttack(GetComponent<selectButtons>().clobButton);
+
+                        }
+                        else
+                        {
+                            regularAttacks();
+                        }
+                        break;
+                }
+                
+                 
+                
                 break;
             default:
                 regularAttacks();
@@ -212,30 +247,30 @@ public class enemyAttackFunctions : MonoBehaviour
         attackString = "The enemy has damaged your health and energy!";
     }
 
-    public void increaseOwnEnergyLow(float enemyEnergy)
+    public void increaseOwnEnergyHigh(float enemyEnergy)
     {
-        Debug.Log("Increased own energy low");
+        Debug.Log("Increased own energy high");
         newVariableHandler.enemyEnergy += enemyEnergy * 1.5f;
         attackString = "The enemy has drawn enough power to increase its own energy by a small amount.";
     }
 
-    public void increaseOwnEnergyHigh(float enemyEnergy)
+    public void increaseOwnEnergyLow(float enemyEnergy)
     {
-        Debug.Log("Increased own energy high");
+        Debug.Log("Increased own energy low");
         newVariableHandler.enemyEnergy += exponentialIncrease(enemyEnergy);
         attackString = "The enemy has summoned all of its strength to increase its own energy substantially!";
     }
-    public void increaseOwnHealthHigh()
+    public void increaseOwnHealthLow()
     {
-        Debug.Log("increased own health high");
+        Debug.Log("increased own health low");
         newVariableHandler.enemyHealth += exponentialIncrease(newVariableHandler.enemyHealth);
 
         attackString = "The enemy has summoned all its power to increase its health by a large amount!";
     }
 
-    public void increaseOwnHealthLow()
+    public void increaseOwnHealthHigh()
     {
-        Debug.Log("Increased own health low");
+        Debug.Log("Increased own health high");
         newVariableHandler.enemyHealth += newVariableHandler.enemyHealth * 1.5f;
 
         attackString = "The enemy has drawn enough power to increase its own health by a small amount.";

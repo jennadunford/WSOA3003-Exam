@@ -33,7 +33,7 @@ public class newVariableHandler : MonoBehaviour
     public enum turnManager { playerTurn, afterPlayerTurn, enemyTurn, afterEnemyTurn, none, empty }
     public turnManager currentTurn = turnManager.playerTurn;
 
-    public bool buttonsEnabled = true;
+    public static bool buttonsEnabled = true;
 
 
 
@@ -84,9 +84,9 @@ public class newVariableHandler : MonoBehaviour
     
     void FixedUpdate()
     {
-
+       
         //If SSRI not used once over 4 turns get reset to zero
-        if (turns > 4)
+        if (turns > 3)
         {
             if(SSRIUsed == 0)
             {

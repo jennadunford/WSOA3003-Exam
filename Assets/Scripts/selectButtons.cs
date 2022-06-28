@@ -39,6 +39,14 @@ public class selectButtons : MonoBehaviour
    
     private void Update()
     {
+        if(clobButton.image.color == Color.gray)
+        {
+            clobButton.enabled = false;
+        }
+        else if(clobButton.image.color == Color.white && SSRIButton.enabled == true)
+        {
+            clobButton.enabled = true;
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             displayPanel();
