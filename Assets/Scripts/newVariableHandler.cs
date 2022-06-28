@@ -81,14 +81,9 @@ public class newVariableHandler : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
-
-       // Debug.Log("Turns: " + turns);
-       // Debug.Log("SSRI Used: " + SSRIUsed);
-
-
 
         //If SSRI not used once over 4 turns get reset to zero
         if (turns > 4)
@@ -96,7 +91,6 @@ public class newVariableHandler : MonoBehaviour
             if(SSRIUsed == 0)
             {
                 SSRICounter = 1;
-                //StartCoroutine(fadeIn(1f,resetSSRIText));
                 turns = 0;
                 SSRIUsed = 0;
                 StartCoroutine(fadeOut(30f, resetSSRIText));
@@ -148,7 +142,6 @@ public class newVariableHandler : MonoBehaviour
         {
             Debug.Log("Enemy has lost all health");
             currentTurn = turnManager.none;
-            //StopAllCoroutines();
             GetComponent<selectButtons>().deactivateButtons();
             StartCoroutine(endGame("Player Win Scene"));
 
@@ -180,7 +173,7 @@ public class newVariableHandler : MonoBehaviour
                 break;
             case (turnManager.enemyTurn):
                 turnText.text = "TURN: ENEMY";
-                this.GetComponent<selectButtons>().happeningText.text = "The enemy is getting ready to strike...";
+                this.GetComponent<selectButtons>().happeningText.text = "The enemy is attacking you!";
                 turnText.color = Color.red;
                 stateText.text = "Current state: Enemy Turn";
                 break;
