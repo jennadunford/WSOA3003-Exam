@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class playerAttackFunctions : MonoBehaviour
 {
     public Text outputBox;
-    int methylphenidateStrength = 8;
+    int methylphenidateStrength = 10;
     int clobazamStrength = 8;
     int betaBlockStrength = 5;
 

@@ -28,7 +28,7 @@ public class newVariableHandler : MonoBehaviour
     private Text playerHealthText;
     private Text playerEnergyText;
 
-    private Text stateText;
+    //private Text stateText;
     private Text resetSSRIText;
     public enum turnManager { playerTurn, afterPlayerTurn, enemyTurn, afterEnemyTurn, none, empty }
     public turnManager currentTurn = turnManager.playerTurn;
@@ -76,7 +76,7 @@ public class newVariableHandler : MonoBehaviour
         playerHealthText = GameObject.FindGameObjectWithTag("healthValueText").GetComponent<Text>();
         playerEnergyText = GameObject.FindGameObjectWithTag("energyValueText").GetComponent<Text>();
 
-        stateText = GameObject.FindGameObjectWithTag("stateText").GetComponent<Text>();
+        //stateText = GameObject.FindGameObjectWithTag("stateText").GetComponent<Text>();
         resetSSRIText = GameObject.FindGameObjectWithTag("ssriReset").GetComponent<Text>();
 
     }
@@ -169,22 +169,22 @@ public class newVariableHandler : MonoBehaviour
             case (turnManager.playerTurn):
                 turnText.text = "TURN: PLAYER";
                 turnText.color = Color.white;
-                stateText.text = "Current state: Player Turn";
+                //stateText.text = "Current state: Player Turn";
                 break;
             case (turnManager.enemyTurn):
                 turnText.text = "TURN: ENEMY";
                 this.GetComponent<selectButtons>().happeningText.text = "The enemy is attacking you!";
                 turnText.color = Color.red;
-                stateText.text = "Current state: Enemy Turn";
+                //stateText.text = "Current state: Enemy Turn";
                 break;
             case (turnManager.afterPlayerTurn):
                 turnText.text = "TURN: ...";
                 turnText.color = Color.red;
-                stateText.text = "Current state: After the Player's Turn";
+                //stateText.text = "Current state: After the Player's Turn";
                 break;
             case (turnManager.afterEnemyTurn):
                 turnText.text = "THE ENEMY HAS ATTACKED";
-                stateText.text = "Current state: After the enemy turn";
+                //stateText.text = "Current state: After the enemy turn";
                 this.GetComponent<selectButtons>().happeningText.text = enemyAttackFunctions.attackString;
                 turnText.color = Color.red;
                 break;
@@ -239,7 +239,7 @@ public class newVariableHandler : MonoBehaviour
                 break;
 
             case turnManager.empty:
-                stateText.text = "Current state: Empty state";
+                //stateText.text = "Current state: Empty state";
                 StartCoroutine(wait());
                 //currentTurn = turnManager.playerTurn;
                 break;
