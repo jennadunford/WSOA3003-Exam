@@ -34,10 +34,9 @@ public class selectButtons : MonoBehaviour
         attackButton = GameObject.FindGameObjectWithTag("aButton").GetComponent<Button>();
 
         selectedAttackText = GameObject.FindGameObjectWithTag("selectedAttackText").GetComponent<Text>();
-        //numberOfTimesUsedText = GameObject.FindGameObjectWithTag("timesUsed").GetComponent<Text>();
 }
 
-    // Update is called once per frame
+   
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -53,23 +52,19 @@ public class selectButtons : MonoBehaviour
     {
         selected = 1;
         selectedAttackText.text = ("Selected attack: Methylphenidate");
-        // Debug.Log(selected + ": Methylphenidate is selected");
-
-
+        
     }
 
     public void selectClob()
     {
         selected = 2;
         selectedAttackText.text = ("Selected attack: Clobazam");
-        //Debug.Log(selected + ": Clobazam is selected");
     }
 
     public void selectSSRI()
     {
         selected = 3;
         selectedAttackText.text = ("Selected attack: SSRIs");
-        // Debug.Log(selected + ": SSRI is selected");
     }
 
     public void selectBeta()
@@ -77,7 +72,6 @@ public class selectButtons : MonoBehaviour
 
         selected = 4;
         selectedAttackText.text = ("Selected attack: Beta Blockers");
-       // Debug.Log(selected + ": Beta blockers is selected");
     }
 
     public void resetSelectedAndInitiateAttack()
@@ -85,19 +79,14 @@ public class selectButtons : MonoBehaviour
         if (GetComponent<newVariableHandler>().currentTurn == newVariableHandler.turnManager.playerTurn)
         {
             
-
-
-           // Debug.Log(selected + ": Reset selected and attack initiated");
             switch (selected)
             {
                 case 0:
-                    //Debug.Log("No attack selected");
                     happeningText.text = "No attack selected";
                     selected = 0;
                     break;
                 case 1:
                     deactivateButtons();
-                    //Debug.Log("Attacked with methylphenidate");
                     selected = 0;
                     if (attackSucessful(newVariableHandler.playerHitChance))
                     {
@@ -116,7 +105,6 @@ public class selectButtons : MonoBehaviour
                 case 2:
                     deactivateButtons();
                     selected = 0;
-                    //Debug.Log("Attacked with clobazam");
                     if (attackSucessful(newVariableHandler.playerHitChance))
                     {
                         this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
@@ -132,7 +120,6 @@ public class selectButtons : MonoBehaviour
                 case 3:
                     deactivateButtons();
                     selected = 0;
-                    //Debug.Log("Attacked with SSRIs");
                     if (attackSucessful(newVariableHandler.playerHitChance))
                     {
                         this.GetComponent<newVariableHandler>().currentTurn = newVariableHandler.turnManager.afterPlayerTurn;
@@ -147,7 +134,6 @@ public class selectButtons : MonoBehaviour
                     break;
                 case 4:
                     deactivateButtons();
-                    //Debug.Log("Attacked with Beta Blockers");
                     selected = 0;
                     if (attackSucessful(newVariableHandler.playerHitChance))
                     {
@@ -218,7 +204,6 @@ public class selectButtons : MonoBehaviour
         SSRIButton.gameObject.SetActive(false);
         betaButton.gameObject.SetActive(false);
         attackButton.gameObject.SetActive(false);
-       // Debug.Log("ALL BUTTONS DEACTIVATED");
     }
 
     public void activateButtons()
@@ -228,7 +213,6 @@ public class selectButtons : MonoBehaviour
         SSRIButton.gameObject.SetActive(true);
         betaButton.gameObject.SetActive(true);
         attackButton.gameObject.SetActive(true);
-       // Debug.Log("ALL BUTTONS ACTIVATED");
     }
 
     public void enableButtons()
@@ -238,7 +222,6 @@ public class selectButtons : MonoBehaviour
         SSRIButton.enabled = true;
         betaButton.enabled = true;
         attackButton.enabled = true;
-       // Debug.Log("ALL BUTTONS ENABLED");
 
     }
 
@@ -249,7 +232,6 @@ public class selectButtons : MonoBehaviour
         SSRIButton.enabled = false;
         betaButton.enabled = false;
         attackButton.enabled = false;
-       // Debug.Log("ALL BUTTONS DISABLED");
     }
 
     public bool attackSucessful(float hitChance)
@@ -266,8 +248,6 @@ public class selectButtons : MonoBehaviour
 
         
     }
-
-
 
 
 }
