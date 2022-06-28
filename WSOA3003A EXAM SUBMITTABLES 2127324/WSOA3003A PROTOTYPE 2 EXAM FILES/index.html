@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Noto+Serif+Display"
+    />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <title>MEDIMON ATTACK SIMULATOR</title>
+  </head>
+  <body>
+    <h1>Fantasy Medimon Attack Simulator</h1>
+    <p class="cen">PROTOTYPE 2 FOR WSOA3003A EXAM</p>
+    <p class="cen">By: Jenna Dunford | Student Number: 2127324</p>
+    <h3 class="cen">
+      Select a MEDIMON and an attack and select a BRAIN ENEMY and an attack,
+      then press "ATTACK" to view results.
+    </h3>
+
+    <div class="options">
+      <section class="dropDown">
+        <label for="brainAid">Choose a Medimon</label>
+
+        <select
+          name="brainAid"
+          id="brainAidSelector"
+          onChange="updateMedimonSelector()"
+        >
+          <option value="0">Please select one</option>
+          <option value="1">Methylphenidragon</option>
+          <option value="2">Clobazore</option>
+          <option value="3">Seratonia Guardian</option>
+          <option value="4">Beta Shield Mage</option>
+          <option value="5">Care Fairy</option>
+        </select>
+      </section>
+      <div class="medimonImageHolder">
+        <img class="hidden" id="medimonImage" src="" />
+      </div>
+      <section class="dropDown">
+        <label for="attackList">Choose your Medimon's Attack!</label>
+
+        <select
+          name="attackList"
+          id="methylpheniDragonAttacks"
+          class="hidden"
+          onChange="updateMedimonAttack('methylpheniDragonAttacks')"
+        >
+          <option value="0">Please select one</option>
+          <option value="m1">Energy Fire</option>
+          <option value="m2">Fire Focus</option>
+          <option value="m3">Fire of Euphoria</option>
+        </select>
+
+        <select
+          name="attackList"
+          id="clobaZoreAttacks"
+          class="hidden"
+          onChange="updateMedimonAttack('clobaZoreAttacks')"
+        >
+          <option value="0">Please select one</option>
+          <option value="c1">Restful Spirit</option>
+          <option value="c2">Cast Away Shadows</option>
+          <option value="c3">Spirit of Courage</option>
+        </select>
+
+        <select
+          name="attackList"
+          id="seratoniaGuardian"
+          class="hidden"
+          onChange="updateMedimonAttack('seratoniaGuardian')"
+        >
+          <option value="0">Please select one</option>
+          <option value="s1">Balancing Act</option>
+          <option value="s2">Banishing of Sadness</option>
+          <option value="s3">Banishing of Fear</option>
+        </select>
+
+        <select
+          name="attackList"
+          id="betaShieldMage"
+          class="hidden"
+          onChange="updateMedimonAttack('betaShieldMage')"
+        >
+          <option value="0">Please select one</option>
+          <option value="b1">Block Stress</option>
+          <option value="b2">Parry Fear</option>
+          <option value="b3">Cast Away Restlessness</option>
+        </select>
+
+        <select
+          name="attackList"
+          id="careFairy"
+          class="hidden"
+          onChange="updateMedimonAttack('careFairy')"
+        >
+          <option value="0">Please select one</option>
+          <option value="cf1">Nature's Grace</option>
+          <option value="cf2">Drink of Peace</option>
+        </select>
+      </section>
+
+      <section class="dropDown">
+        <label for="brainMonster">Choose a Brain Monster</label>
+
+        <select
+          name="brainMonster"
+          id="brainMonsterSelector"
+          onChange="updateMonsterAttack()"
+        >
+          <option value="0">Please select one</option>
+          <option value="1">Anxorwraith</option>
+          <option value="2">Dark Ghost</option>
+          <option value="3">Screaming Banshee</option>
+          <option value="4">Soul Drainer</option>
+        </select>
+      </section>
+
+      <section class="dropDown">
+        <label for="attackListMonster"
+          >Choose your Brain Monster's Attack!</label
+        >
+
+        <select
+          name="attackListMonster"
+          id="anxorWraith"
+          class="hidden"
+          onChange="updateBrainMonsterAttack('anxorWraith')"
+        >
+          <option value="0">Please select one</option>
+          <option value="anx1">Bane of Heart</option>
+          <option value="anx2">Destroy Focus</option>
+          <option value="anx3">Overwhelming Terror</option>
+        </select>
+
+        <select
+          name="attackListMonster"
+          id="darkGhost"
+          class="hidden"
+          onChange="updateBrainMonsterAttack('darkGhost')"
+        >
+          <option value="0">Please select one</option>
+          <option value="dk1">An Endless Sleep</option>
+          <option value="dk2">Blacken the Sun</option>
+          <option value="dk3">Drain Energy</option>
+        </select>
+
+        <select
+          name="attackListMonster"
+          id="screamingBanshee"
+          class="hidden"
+          onChange="updateBrainMonsterAttack('screamingBanshee')"
+        >
+          <option value="0">Please select one</option>
+          <option value="sb1">Soul Drain</option>
+          <option value="sb2">Terror Strike</option>
+          <option value="sb3">Abandon Hope</option>
+        </select>
+
+        <select
+          name="attackListMonster"
+          id="soulDrainer"
+          class="hidden"
+          onChange="updateBrainMonsterAttack('soulDrainer')"
+        >
+          <option value="0">Please select one</option>
+          <option value="sd1">Cast Worthlessness</option>
+          <option value="sd2">Steal Sleep</option>
+          <option value="sd3">Cause Confusion</option>
+        </select>
+      </section>
+
+      <section class="buttonHolder">
+        <button onclick="attack()" class="attackbutton">Attack</button>
+      </section>
+    </div>
+    <div class="resultsDisplay">
+      <div class="medimonStats resultsBox">
+        <h3>MEDIMON</h3>
+        <h4 id="medimonName"></h4>
+        <h5 id="medimonSelectedAttack"></h5>
+        <p id="medimonSelectedAttackDescription"></p>
+        <h5 id="hitChanceContainerM"></h5>
+      </div>
+      <div class="attackResults resultsBox">
+        <h3>ATTACK RESULTS</h3>
+        <h4 id="versusText"></h4>
+        <h5 id="medimonResults"></h5>
+        <p id="medimonHitResult"></p>
+        <h5 id="brainMonResults"></h5>
+        <p id="brainMonHitResult"></p>
+      </div>
+      <div class="brainMonsterStats resultsBox">
+        <h3>BRAIN MONSTER</h3>
+        <h4 id="brainMonsterName"></h4>
+        <h5 id="brainMonsterSelectedAttack"></h5>
+        <p id="brainMonsterSelectedAttackDescription"></p>
+        <h5 id="hitChanceContainerB"></h5>
+      </div>
+    </div>
+    <div class="explanations" id="exp">
+      <h2>Some Explanations</h2>
+      <div class="textHolder">
+        <article>
+          <p>
+            This prototype displays an idea for an attack simulator based on the
+            mental health experiences I have had. Due to this, as I disclaimer I
+            should put that I am not attempting to generalize how all people
+            deal with various mental health issues, I am just trying to display
+            my own.
+          </p>
+          <p>
+            The "Medimon's" within this attack simulator are representations of
+            the medications I take, or have taken in the past, to manage my
+            mental health disorders. I have used some elements from the fantasy
+            genre to portray them.
+          </p>
+          <p>The table below details explanations for the Medimon's.</p>
+          <h3>Table of Medimon's</h3>
+          <div class="tableDiv">
+            <div class="medimonTable">
+              <ul class="mTable">
+                <li class="mItem">Medimon Name</li>
+                <li class="mItem">Medication Name</li>
+                <li class="mItem">Description of Medication</li>
+                <li class="mItem">Methylphenidragon</li>
+                <li class="mItem">Methylphenidate</li>
+                <li class="mItem">
+                  A stimulant, sometimes used in the treatment of ADHD, that
+                  helps to fight off fatigue and general depressive feelings.
+                </li>
+                <li class="mItem">Clobazore</li>
+                <li class="mItem">Urbanol (or Clobazam)</li>
+                <li class="mItem">
+                  A sedative, used to help cope with anxiety, induces calmness,
+                  can help while dealing with stresfull situations.
+                </li>
+                <li class="mItem">Seratonia Guardian</li>
+                <li class="mItem">
+                  Selective Seratonin Reabsorbtion Inhibitor (SSRIs)
+                </li>
+                <li class="mItem">
+                  A medication used to prevent the reabsorbtion of seratonin in
+                  the brain, when used over a long period of time, it helps with
+                  the general management of anxiety and depression.
+                </li>
+                <li class="mItem">Beta Shield Mage</li>
+                <li class="mItem">Beta Blockers</li>
+                <li class="mItem">
+                  When used for anxiety, Beta Blockers block the release of
+                  adrenaline from entering your heart, when experiencing heavy
+                  anxiety over a situation, adrenaline can make this response
+                  much worse, and beta blockers can help manage this.
+                </li>
+                <li class="mItem">Care Fairy</li>
+                <li class="mItem">Self-Care (NOT a medication)</li>
+                <li class="mItem">
+                  Self care is definitely not a great solution for mental
+                  illness, however, there are also definitely benefits to taking
+                  care of yourself. While taking daily walks or drinking tea or
+                  doing other things to manage your wellbeing won't cure mental
+                  illnesses, they can help with improving your general quality
+                  of life and getting through stresfull periods. I find that
+                  practicing self care along with steady usage of my prescribed
+                  medications definitely works well for me.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p>
+            The "Brain Monster's" in this simulator are portrayals of the mental
+            illnesses and other mental-based struggles that I personally deal
+            with, represented in a kind of fantasy way.
+          </p>
+          <p>
+            The table below details the brain monsters and what they represent.
+          </p>
+          <h3>Table of Brain Monsters</h3>
+          <div class="tableDiv">
+            <div class="medimonTable">
+              <ul class="mTable">
+                <li class="mItem">Brain Monster Name</li>
+                <li class="mItem">Real Life Name</li>
+                <li class="mItem">Description</li>
+                <li class="mItem">Anxor Wraith</li>
+                <li class="mItem">Anxiety</li>
+                <li class="mItem">
+                  Anxiety is a mental illness that causes extreme nervousness
+                  over situations that would otherwise be perfectly manageable.
+                  It is extremely daunting to have to deal with, and can be
+                  difficult to explain to others. Sometimes I cannot explain why
+                  exactly I experience anxiety, sometimes so bad I am brought to
+                  tears or left feeling filled with dread. Often, unfortunately,
+                  there is no reason.
+                </li>
+                <li class="mItem">Dark Ghost</li>
+                <li class="mItem">Depression</li>
+                <li class="mItem">
+                  Depression is a mental illness that causes extreme episodes of
+                  sadness, hopelessness and other overwhelming negative
+                  emotions. Depression also often comes with extreme fatigue and
+                  a lack of motivation to carry out basic tasks. Depressive
+                  episodes can lead to sleeping for entire days at a time,
+                  neglecting things like personal hygiene, and falling behind
+                  with studies.
+                </li>
+                <li class="mItem">Screaming Banshee</li>
+                <li class="mItem">Stressful/Traumatic Situations</li>
+                <li class="mItem">
+                  I chose a screaming banshee to represent stressful or
+                  traumatic situations, because, personally, loud and persistant
+                  noises trigger a lot of negative mental reactions from me.
+                  These situations are often unavoidable, and can happen at
+                  inconvienent times when I might not have access to medications
+                  that would calm me down. Situations like this come with their
+                  own issues, but they also excacerbate existing conditions such
+                  as anxiety and depression.
+                </li>
+                <li class="mItem">Soul Drainer</li>
+                <li class="mItem">Burnout</li>
+                <li class="mItem">
+                  Similar to stressul situations, burnout is not a mental
+                  illness, but it can excacerbate pre-existing conditions. For
+                  me, I define burnout as overworking myself to the point where
+                  it has a serious impact on my mental and physical wellbeing.
+                  It is a draining thing to experience, hence, using a soul
+                  drainer to represent it.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p>
+            As for how the attack simulator works, each Medimon and each Brain
+            Monster come with a selection of attacks, representing various
+            traits that they have.
+          </p>
+          <p>
+            The Medimon's attack strength and chance of an attack landing are
+            dependant on the Brain Monster that is chosen. Some Medimon's are
+            more effective against some Brain Monster's, and less effective
+            against others.
+          </p>
+          <p>
+            The brain monster's attack strength is based on the specific attack
+            used by the Medimon, sometimes the attack used will increase the
+            strength of the brain monster's attack, and some attacks will weaken
+            them.
+          </p>
+          <p>
+            After selecting attack, a summary is generated of the attack that
+            took place. It states whether or not the chosen Medimon's attack was
+            sucessful, the strength of the attack whether or not the attack
+            landed, and the Brain Monster's attack strength and whether or not
+            their attack landed.
+          </p>
+          <p>
+            This prototype is obviously by no means a fleshed out game at all,
+            it is merely a simulator to demonstrate a partof the concept laid
+            out in my hypothesis for this exam project.
+          </p>
+          <p>
+            This prototype should be evaluated along with the report submitted
+            for this assignment, as more context is given in terms of the system
+            design.
+          </p>
+          <p>
+            The source code for this prototype, along with the unity assets for
+            prototype 1 can be acessed on the github repository for this
+            assignment.
+            <a
+              href="https://github.com/jennadunford/WSOA3003-Exam.git"
+              target="_blank"
+              >Access the repository here.</a
+            >
+          </p>
+        </article>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
